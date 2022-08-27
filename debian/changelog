@@ -1,3 +1,10 @@
+7zip (22.01+dfsg-3) UNRELEASED; urgency=medium
+
+  * Enable link time optimization (LTO)
+  * Manually de-reference pointers
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sat, 27 Aug 2022 14:48:25 +0900
+
 7zip (22.01+dfsg-2) unstable; urgency=medium
 
   * Rebuild with GCC 12 (Closes: #1012886)
