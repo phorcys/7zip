@@ -1,3 +1,10 @@
+7zip (22.01+dfsg-4) UNRELEASED; urgency=medium
+
+  * Revert "Enable link time optimization (LTO)"
+  * Revert "Manually de-reference pointers"
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sat, 27 Aug 2022 18:35:53 +0900
+
 7zip (22.01+dfsg-3) unstable; urgency=medium
 
   * Enable link time optimization (LTO)
