@@ -1,9 +1,9 @@
-7zip (22.01+dfsg-5) UNRELEASED; urgency=medium
+7zip (22.01+dfsg-5) unstable; urgency=medium
 
   * Enable link time optimization (LTO)
   * Manually de-reference pointers
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sat, 03 Dec 2022 18:15:22 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sat, 03 Dec 2022 19:40:39 +0900
 
 7zip (22.01+dfsg-4) unstable; urgency=medium
 
