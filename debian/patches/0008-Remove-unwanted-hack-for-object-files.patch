@@ -1,0 +1,24 @@
+From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
+Date: Wed, 7 Dec 2022 19:26:44 +0900
+Subject: Remove unwanted hack for object files
+
+"-fPIC" is not needed for a normal executable file.
+This option might breaks reproducible build.
+---
+ CPP/7zip/7zip_gcc.mak | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CPP/7zip/7zip_gcc.mak b/CPP/7zip/7zip_gcc.mak
+index 090e498..525c24e 100755
+--- a/CPP/7zip/7zip_gcc.mak
++++ b/CPP/7zip/7zip_gcc.mak
+@@ -25,8 +25,7 @@ endif
+ CFLAGS_BASE_LIST = -c
+ # CFLAGS_BASE_LIST = -S
+ CFLAGS_BASE = -O2 $(CFLAGS_BASE_LIST) $(CFLAGS_WARN_WALL) $(CFLAGS_WARN) \
+- -DNDEBUG -D_REENTRANT -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
+- -fPIC
++ -DNDEBUG -D_REENTRANT -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+ 
+ # -D_7ZIP_AFFINITY_DISABLE
+ 
