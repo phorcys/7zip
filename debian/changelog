@@ -1,9 +1,12 @@
-7zip (22.01+dfsg-7) UNRELEASED; urgency=medium
+7zip (22.01+dfsg-7) unstable; urgency=medium
+
+  Reproducible build tester in Sid (unstable) fails to strip some debug infos
+  like build paths. This makes fail to reproducible build.
 
   * Rediff patches
   * Revert "Enable link time optimization (LTO)"
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Fri, 09 Dec 2022 20:22:07 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Fri, 09 Dec 2022 20:26:57 +0900
 
 7zip (22.01+dfsg-6) unstable; urgency=medium
 
