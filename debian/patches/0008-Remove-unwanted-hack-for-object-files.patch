@@ -3,7 +3,6 @@ Date: Wed, 7 Dec 2022 19:26:44 +0900
 Subject: Remove unwanted hack for object files
 
 "-fPIC" is not needed for a normal executable file.
-This option might breaks reproducible build.
 ---
  CPP/7zip/7zip_gcc.mak | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
