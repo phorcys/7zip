@@ -1,3 +1,9 @@
+7zip (22.01+dfsg-8) UNRELEASED; urgency=medium
+
+  * Upgrade Debian standards
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 18 Dec 2022 21:04:57 +0900
+
 7zip (22.01+dfsg-7) unstable; urgency=medium
 
   Reproducible build tester in Sid (unstable) fails to strip some debug infos
