@@ -16,7 +16,7 @@ C/AesOpt.c:
  1 file changed, 26 insertions(+), 2 deletions(-)
 
 diff --git a/C/AesOpt.c b/C/AesOpt.c
-index 60058bc..1a81546 100755
+index 60058bc..1a81546 100644
 --- a/C/AesOpt.c
 +++ b/C/AesOpt.c
 @@ -61,7 +61,7 @@

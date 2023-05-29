@@ -2,13 +2,13 @@ From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
 Date: Wed, 13 Oct 2021 07:59:13 +0900
 Subject: Guard ARM v8 feature from old architecture
 
-Forwarded: not-needed
+Forwarded: https://sourceforge.net/p/sevenzip/patches/369/
 ---
  C/7zCrc.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/C/7zCrc.c b/C/7zCrc.c
-index c7ec353..230d8a5 100755
+index c7ec353..230d8a5 100644
 --- a/C/7zCrc.c
 +++ b/C/7zCrc.c
 @@ -81,8 +81,9 @@ UInt32 MY_FAST_CALL CrcUpdateT1(UInt32 v, const void *data, size_t size, const U

@@ -2,13 +2,15 @@ From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
 Date: Wed, 7 Dec 2022 19:26:44 +0900
 Subject: Remove unwanted hack for object files
 
+Forwarded: not-needed
+
 "-fPIC" is not needed for a normal executable file.
 ---
  CPP/7zip/7zip_gcc.mak | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/CPP/7zip/7zip_gcc.mak b/CPP/7zip/7zip_gcc.mak
-index 090e498..525c24e 100755
+index 090e498..525c24e 100644
 --- a/CPP/7zip/7zip_gcc.mak
 +++ b/CPP/7zip/7zip_gcc.mak
 @@ -25,8 +25,7 @@ endif
