@@ -1,12 +1,27 @@
 # -*- mode: conf -*-
 
-Features: test-name=smoke
-Test-Command: 7zz
+Features: test-name=smoke-7zz
+Test-Command: 7zz.7zip
 Restrictions: superficial
 
-Features: test-name=benchmark-simple
-Test-Command: 7zz b -bt
+Features: test-name=smoke-7z
+Test-Command: 7z.7zip
+Restrictions: superficial
 
-Features: test-name=benchmark-full
-Test-Command: 7zz b "-mm=*" "-mmt=*" -bt
+Features: test-name=smoke-7za
+Test-Command: 7za.7zip
+Restrictions: superficial
+
+Features: test-name=smoke-7zr
+Test-Command: 7zr.7zip
+Restrictions: superficial
+
+Features: test-name=benchmark-7zz-simple
+Test-Command: 7zz.7zip b -bt
+
+Features: test-name=benchmark-7z-simple
+Test-Command: 7z.7zip b -bt
+
+Features: test-name=benchmark-7zz-full
+Test-Command: 7zz.7zip b "-mm=*" "-mmt=*" -bt
 Architecture: !armhf
