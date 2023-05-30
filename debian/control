@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: YOKOTA Hiroshi <yokota.hgml@gmail.com>
 Uploaders: Dylan Aïssi <daissi@debian.org>
-Build-Depends: debhelper-compat (= 13)
+Build-Depends: debhelper-compat (= 13), dh-exec
 Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Homepage: https://www.7-zip.org/
