@@ -3,6 +3,8 @@
 /.debhelper/
 /debhelper-build-stamp
 /files
+/7zip.postinst.debhelper
+/7zip.prerm.debhelper
 /7zip.substvars
 /7zip/
 /tmp/
