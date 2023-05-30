@@ -16,6 +16,22 @@ Features: test-name=smoke-7zr
 Test-Command: 7zr.7zip
 Restrictions: superficial
 
+Features: test-name=formats-7zz
+Test-Command: 7zz.7zip i
+Restrictions: superficial
+
+Features: test-name=formats-7z
+Test-Command: 7z.7zip i
+Restrictions: superficial
+
+Features: test-name=formats-7za
+Test-Command: 7za.7zip i
+Restrictions: superficial
+
+Features: test-name=formats-7zr
+Test-Command: 7zr.7zip i
+Restrictions: superficial
+
 Features: test-name=benchmark-7zz-simple
 Test-Command: 7zz.7zip b -bt
 
