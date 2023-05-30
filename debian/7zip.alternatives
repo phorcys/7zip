@@ -1,0 +1,6 @@
+Name: 7zip
+Link: /usr/bin/7zz
+Alternative: /usr/bin/7zz.7zip
+Dependents:
+  /usr/share/man/man1/7zz.1.gz 7zz.1.gz /usr/share/man/man1/7zz.7zip.1.gz
+Priority: 100
