@@ -1,3 +1,4 @@
+# -*- mode: conf -*-
 Name: 7zip
 Link: /usr/bin/7zz
 Alternative: /usr/bin/7zz.7zip
