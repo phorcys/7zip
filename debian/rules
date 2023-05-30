@@ -54,4 +54,10 @@ override_dh_auto_build:
 		DEB_LDFLAGS="$(LDFLAGS) -pipe"
 
 override_dh_auto_clean:
-	$(MAKE) -C CPP/7zip/Bundles/Alone2 -f ../../cmpl_gcc.mak clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone2    -f ../../cmpl_gcc.mak clean
+	$(MAKE) -C CPP/7zip/Bundles/Format7zF -f ../../cmpl_gcc.mak clean
+	$(MAKE) -C CPP/7zip/UI/Console        -f ../../cmpl_gcc.mak clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone7z   -f ../../cmpl_gcc.mak clean
+	$(MAKE) -C CPP/7zip/Bundles/SFXCon    -f ../../cmpl_gcc.mak clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone     -f ../../cmpl_gcc.mak clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone7z   -f ../../cmpl_gcc.mak clean
