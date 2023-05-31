@@ -1,4 +1,6 @@
-7zip (22.01+dfsg-9) UNRELEASED; urgency=medium
+7zip (22.01+dfsg-9) unstable; urgency=medium
+
+  This version provides 7z/7za/7zr commands as 7z.7zip/7za.7zip/7zr.7zip .
 
   * Remove unwanted exec permissions when importing from upstream tarball
   * Strict paths in post-unpack hook
@@ -29,7 +31,7 @@
   * Disable alternative selection
   * Add some text about variant commands to manual page
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 31 May 2023 21:29:01 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 31 May 2023 21:44:08 +0900
 
 7zip (22.01+dfsg-8) unstable; urgency=medium
 
