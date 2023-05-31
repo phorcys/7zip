@@ -10,4 +10,4 @@ CPP/7zip/Bundles/SFXCon/b/g/7zCon => usr/lib/7zip/7zCon.sfx
 debian/scripts/7z.sh  => usr/bin/7z.7zip
 debian/scripts/7za.sh => usr/bin/7za.7zip
 debian/scripts/7zr.sh => usr/bin/7zr.7zip
-debian/scripts/7zz.sh => usr/bin/7zz.7zip
+debian/scripts/7zz.sh => usr/bin/7zz
