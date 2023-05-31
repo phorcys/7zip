@@ -4,14 +4,22 @@ Subject: Accept Debian build flags
 
 Forwarded: not-needed
 ---
- CPP/7zip/7zip_gcc.mak | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ CPP/7zip/7zip_gcc.mak | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/CPP/7zip/7zip_gcc.mak b/CPP/7zip/7zip_gcc.mak
-index 2a24e06..090e498 100644
+index 2a24e06..8901180 100644
 --- a/CPP/7zip/7zip_gcc.mak
 +++ b/CPP/7zip/7zip_gcc.mak
-@@ -82,7 +82,7 @@ endif
+@@ -75,14 +75,14 @@ SHARED_EXT=.dll
+ LDFLAGS = -shared -DEF $(DEF_FILE) $(LDFLAGS_STATIC)
+ else
+ SHARED_EXT=.so
+-LDFLAGS = -shared -fPIC $(LDFLAGS_STATIC)
++LDFLAGS = -shared -fPIC $(DEB_LDFLAGS) $(LDFLAGS_STATIC)
+ CC_SHARED=-fPIC
+ endif
+ 
  
  else
  
