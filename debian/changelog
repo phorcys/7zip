@@ -1,4 +1,4 @@
-7zip (22.01+dfsg-9) UNRELEASED; urgency=medium
+7zip (22.01+dfsg-9) unstable; urgency=medium
 
   This version provides 7z/7za/7zr commands as 7z.7zip/7za.7zip/7zr.7zip .
 
@@ -33,7 +33,7 @@
   * Fixup test code
   * Rediff patches
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 31 May 2023 23:01:35 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 31 May 2023 23:03:45 +0900
 
 7zip (22.01+dfsg-8) unstable; urgency=medium
 
