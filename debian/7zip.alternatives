@@ -1,7 +1,13 @@
 # -*- mode: conf -*-
 Name: 7zip
-Link: /usr/bin/7zz
-Alternative: /usr/bin/7zz.7zip
+Link: /usr/bin/7z
+Alternative: /usr/bin/7z.7zip
 Dependents:
-  /usr/share/man/man1/7zz.1.gz 7zz.1.gz /usr/share/man/man1/7zz.7zip.1.gz
+  /usr/bin/7zz 7zz /usr/bin/7zz.7zip
+  /usr/bin/7za 7za /usr/bin/7zr.7zip
+  /usr/bin/7zr 7zr /usr/bin/7zr.7zip
+  /usr/share/man/man1/7z.1  7z.1  /usr/share/man/man1/7z.7zip.1
+  /usr/share/man/man1/7zz.1 7zz.1 /usr/share/man/man1/7zz.7zip.1
+  /usr/share/man/man1/7za.1 7za.1 /usr/share/man/man1/7za.7zip.1
+  /usr/share/man/man1/7zr.1 7zr.1 /usr/share/man/man1/7zr.7zip.1
 Priority: 100
