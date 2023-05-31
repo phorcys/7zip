@@ -13,6 +13,7 @@ Vcs-Browser: https://salsa.debian.org/debian/7zip
 Package: 7zip
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Suggests: 7zip-rar
 Description: 7-Zip file archiver with a high compression ratio
  7-Zip is a file archiver with a high compression ratio. The main features
  of 7-Zip are:
@@ -28,3 +29,4 @@ Description: 7-Zip file archiver with a high compression ratio
   * Powerful command line version
  .
  Note: The unRAR code was dropped to keep compatible with DFSG.
+       Install "7zip-rar" pacakge in non-free section to use RAR files.
