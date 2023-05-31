@@ -19,7 +19,7 @@ override_dh_auto_build:
 		DEB_LDFLAGS="$(LDFLAGS) -pipe"
 	$(MAKE) -C CPP/7zip/Bundles/Format7zF -f ../../cmpl_gcc.mak \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
-		DISABLE_RAR=1 \
+		DISABLE_RAR_COMPRESS=1 \
 		DEB_CFLAGS="$(CFLAGS) -pipe" \
 		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
