@@ -1,3 +1,27 @@
+7zip (22.01+dfsg-9) UNRELEASED; urgency=medium
+
+  * Remove unwanted exec permissions when importing from upstream tarball
+  * Strict paths in post-unpack hook
+  * Remove unwanted exec permissions
+  * Rediff patches
+  * Build other flavors binary
+  * Use dh-exec to install with another name
+  * Update ignore list
+  * Install files to another place
+  * Install trampoline scripts to invoke real executable
+  * Install "7za" and "7zr"
+  * Move manual path
+  * Add alternative selection
+  * Update clean target
+  * Add "7zip" prefix to packager files
+  * Update ignore list
+  * Rediff patches
+  * Use conf-mode
+  * Add tests for other binaries
+  * Show supported format list
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 31 May 2023 10:15:19 +0900
+
 7zip (22.01+dfsg-8) unstable; urgency=medium
 
   * Upgrade Debian standards
