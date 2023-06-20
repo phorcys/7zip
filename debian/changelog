@@ -1,4 +1,4 @@
-7zip (23.01+dfsg-1) UNRELEASED; urgency=medium
+7zip (23.01+dfsg-1) unstable; urgency=medium
 
   * Rediff patches
   * Remove unwanted exec permissions
@@ -7,7 +7,7 @@
   * Rediff patches
   * Renumber patches
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 21 Jun 2023 03:22:59 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 21 Jun 2023 03:29:25 +0900
 
 7zip (22.01+dfsg-9) unstable; urgency=medium
 
