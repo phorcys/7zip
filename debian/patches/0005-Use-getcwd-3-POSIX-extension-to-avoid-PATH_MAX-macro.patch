@@ -10,18 +10,18 @@ This fix helps GNU Hurd.
  1 file changed, 1 insertion(+), 12 deletions(-)
 
 diff --git a/CPP/Windows/FileDir.cpp b/CPP/Windows/FileDir.cpp
-index 5e95204..9b5394e 100644
+index 0d3a3a9..77277c7 100644
 --- a/CPP/Windows/FileDir.cpp
 +++ b/CPP/Windows/FileDir.cpp
-@@ -906,22 +906,11 @@ bool GetCurrentDir(FString &path)
+@@ -1001,22 +1001,11 @@ bool GetCurrentDir(FString &path)
  {
    path.Empty();
  
--  #define MY__PATH_MAX  PATH_MAX
--  // #define MY__PATH_MAX  1024
+-  #define MY_PATH_MAX  PATH_MAX
+-  // #define MY_PATH_MAX  1024
 -
--  char s[MY__PATH_MAX + 1];
--  char *res = getcwd(s, MY__PATH_MAX);
+-  char s[MY_PATH_MAX + 1];
+-  char *res = getcwd(s, MY_PATH_MAX);
 -  if (res)
 -  {
 -    path = fas2fs(s);
