@@ -1,3 +1,14 @@
+7zip (23.01+dfsg-1) UNRELEASED; urgency=medium
+
+  * Rediff patches
+  * Remove unwanted exec permissions
+  * New upstream version 23.01+dfsg
+  * Rediff patches
+  * Rediff patches
+  * Renumber patches
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 21 Jun 2023 03:22:59 +0900
+
 7zip (22.01+dfsg-9) unstable; urgency=medium
 
   This version provides 7z/7za/7zr commands as 7z.7zip/7za.7zip/7zr.7zip .
