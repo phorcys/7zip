@@ -1,0 +1,29 @@
+From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
+Date: Wed, 21 Jun 2023 09:43:09 +0900
+Subject: Disable hardware swap code on armhf
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+armhf supports NEON, but doesn't support vrev16q_u8().
+
+> /usr/lib/gcc/arm-linux-gnueabihf/12/include/arm_neon.h:9186:1:
+> error: inlining failed in call to ‘always_inline’ ‘vrev16q_u8’:
+> target specific option mismatch
+---
+ C/SwapBytes.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/C/SwapBytes.c b/C/SwapBytes.c
+index 8f4c356..d2cc145 100644
+--- a/C/SwapBytes.c
++++ b/C/SwapBytes.c
+@@ -336,7 +336,7 @@ ShufBytes_256(void *items8, const void *lim8, const void *mask128_ptr)
+ 
+   #if defined(__clang__) && (__clang_major__ >= 8) \
+     || defined(__GNUC__) && (__GNUC__ >= 8)
+-    #if (defined(__ARM_ARCH) && (__ARM_ARCH >= 7)) \
++    #if (defined(__ARM_ARCH) && (__ARM_ARCH >= 8)) \
+         || defined(MY_CPU_ARM64)
+       #define USE_SWAP_128
+     #endif
