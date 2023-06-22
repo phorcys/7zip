@@ -2,6 +2,8 @@ From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
 Date: Wed, 21 Jun 2023 08:58:52 +0900
 Subject: Fix ARM architecture selection code
 
+Forwarded: https://sourceforge.net/p/sevenzip/patches/413/
+
 This fix guards NEON function usage from older ARM architectures like armel
 (__ARM_ARCH == 5).
 ---

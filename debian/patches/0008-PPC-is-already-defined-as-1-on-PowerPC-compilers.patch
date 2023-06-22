@@ -2,6 +2,8 @@ From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
 Date: Wed, 21 Jun 2023 12:08:38 +0900
 Subject: "PPC" is already defined as "1" on PowerPC compilers
 
+Forwarded: https://sourceforge.net/p/sevenzip/patches/413/
+
 Use "Z7_PPC" to avoid symbol name conflicts
 ---
  C/Bra.c                              | 4 ++--
