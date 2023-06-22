@@ -4,5 +4,5 @@
 0004-Use-getcwd-3-POSIX-extension-to-avoid-PATH_MAX-macro.patch
 0005-Disable-local-echo-display-when-in-input-passwords-C.patch
 0006-Fix-ARM-architecture-selection-code.patch
-0007-Disable-hardware-swap-code-on-armhf.patch
+0007-Add-__target__-fpu-neon-attribute-to-use-NEON-specif.patch
 0008-PPC-is-already-defined-as-1-on-PowerPC-compilers.patch
