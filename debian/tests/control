@@ -38,6 +38,6 @@ Test-Command: 7zz b -bt
 Features: test-name=benchmark-7z-simple
 Test-Command: 7z b -bt
 
-Features: test-name=benchmark-7zz-full
-Test-Command: 7zz b "-mm=*" "-mmt=*" -bt
+Features: test-name=benchmark-7z-full
+Test-Command: 7z b "-mm=*" "-mmt=*" -bt
 Architecture: !armhf
