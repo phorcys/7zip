@@ -1,3 +1,20 @@
+7zip (23.01+dfsg-4~exp1) UNRELEASED; urgency=medium
+
+  * Split 7zz to 7zip-standalone (Closes: #1042452)
+  * Update ignore list
+  * Replace with p7zip
+  * Import p7zip(1) script from p7zip package
+  * Provides p7zip to replace it
+  * Add Conflicts to remove p7zip from machine
+  * Lintian fix
+  * Man page link fix
+  * Update man page about plugins support
+  * Cosmetic fix
+  * Update autopkgtest
+  * Use 7z for full benchmark test
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 06 Aug 2023 20:30:32 +0900
+
 7zip (23.01+dfsg-3) unstable; urgency=medium
 
   * Rediff patches
