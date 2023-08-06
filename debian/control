@@ -13,6 +13,7 @@ Vcs-Browser: https://salsa.debian.org/debian/7zip
 Package: 7zip
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Recommends: 7zip-standalone
 Suggests: 7zip-rar
 Description: 7-Zip file archiver with a high compression ratio
  7-Zip is a file archiver with a high compression ratio. The main features
@@ -28,5 +29,21 @@ Description: 7-Zip file archiver with a high compression ratio
   * Strong AES-256 encryption in 7z and ZIP formats
   * Powerful command line version
  .
+ "7zip" provides:
+ * /usr/bin/7z:  Full featured with plugin functionality.
+ * /usr/bin/7za: Major formats/features only.
+ * /usr/bin/7zr: LZMA (.7z, .lzma, .xz) only. Minimal executable.
+ .
  Note: The unRAR code was dropped to keep compatible with DFSG.
        Install 7zip-rar pacakge in non-free section to use RAR files.
+
+Package: 7zip-standalone
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, 7zip (= ${binary:Version})
+Description: 7-Zip file archiver with a high compression ratio (standalone)
+ 7-Zip is a file archiver with a high compression ratio.
+ .
+ "7zip-standalone" provides:
+ * /usr/bin/7zz: Full featured except plugins, standalone executable.
+       This means 7zz can't work with unRAR plugin that provided by 7zip-rar
+       package. Use 7zip for unRAR plugin.
