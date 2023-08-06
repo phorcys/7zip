@@ -1,6 +1,6 @@
-7zip (23.01+dfsg-4~exp1) UNRELEASED; urgency=medium
+7zip (23.01+dfsg-4~exp1) experimental; urgency=medium
 
-  * Split 7zz to 7zip-standalone (Closes: #1042452)
+  * Split 7zz to 7zip-standalone
   * Update ignore list
   * Replace with p7zip
   * Import p7zip(1) script from p7zip package
@@ -13,7 +13,7 @@
   * Update autopkgtest
   * Use 7z for full benchmark test
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 06 Aug 2023 20:30:32 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 06 Aug 2023 21:18:17 +0900
 
 7zip (23.01+dfsg-3) unstable; urgency=medium
 
