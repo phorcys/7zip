@@ -5,15 +5,15 @@ Test-Command: 7zz
 Restrictions: superficial
 
 Features: test-name=smoke-7z
-Test-Command: 7z.7zip
+Test-Command: 7z
 Restrictions: superficial
 
 Features: test-name=smoke-7za
-Test-Command: 7za.7zip
+Test-Command: 7za
 Restrictions: superficial
 
 Features: test-name=smoke-7zr
-Test-Command: 7zr.7zip
+Test-Command: 7zr
 Restrictions: superficial
 
 Features: test-name=formats-7zz
@@ -21,22 +21,22 @@ Test-Command: 7zz i
 Restrictions: superficial
 
 Features: test-name=formats-7z
-Test-Command: 7z.7zip i
+Test-Command: 7z i
 Restrictions: superficial
 
 Features: test-name=formats-7za
-Test-Command: 7za.7zip i
+Test-Command: 7za i
 Restrictions: superficial
 
 Features: test-name=formats-7zr
-Test-Command: 7zr.7zip i
+Test-Command: 7zr i
 Restrictions: superficial
 
 Features: test-name=benchmark-7zz-simple
 Test-Command: 7zz b -bt
 
 Features: test-name=benchmark-7z-simple
-Test-Command: 7z.7zip b -bt
+Test-Command: 7z b -bt
 
 Features: test-name=benchmark-7zz-full
 Test-Command: 7zz b "-mm=*" "-mmt=*" -bt
