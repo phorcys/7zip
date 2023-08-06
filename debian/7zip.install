@@ -6,6 +6,7 @@ CPP/7zip/UI/Console/b/g/7z           usr/lib/7zip
 #
 CPP/7zip/Bundles/SFXCon/b/g/7zCon => usr/lib/7zip/7zCon.sfx
 #
-debian/scripts/7z.sh  => usr/bin/7z
-debian/scripts/7za.sh => usr/bin/7za
-debian/scripts/7zr.sh => usr/bin/7zr
+debian/scripts/7z.sh    => usr/bin/7z
+debian/scripts/7za.sh   => usr/bin/7za
+debian/scripts/7zr.sh   => usr/bin/7zr
+debian/scripts/p7zip.sh => usr/bin/p7zip
