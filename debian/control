@@ -13,8 +13,7 @@ Vcs-Browser: https://salsa.debian.org/debian/7zip
 Package: 7zip
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Recommends: 7zip-standalone
-Suggests: 7zip-rar
+Suggests: 7zip-standalone, 7zip-rar
 Breaks: p7zip-full (<= 16.02+dfsg-8), p7zip (<= 16.02+dfsg-8)
 Replaces: p7zip-full (<= 16.02+dfsg-8), p7zip (<= 16.02+dfsg-8)
 Conflicts: p7zip-full (<= 16.02+dfsg-8), p7zip (<= 16.02+dfsg-8)
