@@ -1,3 +1,11 @@
+7zip (23.01+dfsg-5) UNRELEASED; urgency=medium
+
+  * Avoid file conflicts when in unpack 7zip-standalone package (Closes: #1050118)
+  * Use more better word for changelog
+  * Fix typo
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 20 Aug 2023 23:07:05 +0900
+
 7zip (23.01+dfsg-4) unstable; urgency=medium
 
   * Move /usr/bin/7zz to 7zip-standalone package (Closes: #1042452)
