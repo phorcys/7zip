@@ -51,4 +51,4 @@ Description: 7-Zip file archiver with a high compression ratio (standalone)
  "7zip-standalone" provides:
   * /usr/bin/7zz: Full featured except plugins, standalone executable.
        This means 7zz can't work with unRAR plugin that provided by 7zip-rar
-       package. Use 7zip for unRAR plugin.
+       package. Use 7zip package for unRAR plugin.
