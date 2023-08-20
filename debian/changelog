@@ -1,13 +1,13 @@
 7zip (23.01+dfsg-4) unstable; urgency=medium
 
-  * Split 7zz to 7zip-standalone (Closes: #1042452)
+  * Move /usr/bin/7zz to 7zip-standalone package (Closes: #1042452)
   * Change recommends to suggests about 7zip-standalone package
 
  -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 20 Aug 2023 17:01:29 +0900
 
 7zip (23.01+dfsg-4~exp1) experimental; urgency=medium
 
-  * Split 7zz to 7zip-standalone
+  * Move /usr/bin/7zz to 7zip-standalone package
   * Update ignore list
   * Replace with p7zip
   * Import p7zip(1) script from p7zip package
