@@ -1,8 +1,9 @@
-7zip (23.01+dfsg-4) UNRELEASED; urgency=medium
+7zip (23.01+dfsg-4) unstable; urgency=medium
 
+  * Split 7zz to 7zip-standalone (Closes: #1042452)
   * Change recommends to suggests about 7zip-standalone package
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 20 Aug 2023 16:34:54 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 20 Aug 2023 17:01:29 +0900
 
 7zip (23.01+dfsg-4~exp1) experimental; urgency=medium
 
