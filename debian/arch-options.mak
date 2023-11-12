@@ -3,11 +3,9 @@
 c_flags =
 cxx_flags =
 
-ifeq      (kfreebsd-amd64, $(DEB_HOST_ARCH))
+ifeq      (kfreebsd, $(DEB_HOST_ARCH_OS))
   cxx_flags += -Wno-error=conversion
-else ifeq (kfreebsd-i386, $(DEB_HOST_ARCH))
-  cxx_flags += -Wno-error=conversion
-else ifeq (hurd-i386, $(DEB_HOST_ARCH))
+else ifeq (hurd, $(DEB_HOST_ARCH_OS))
   cxx_flags += -Wno-error=conversion
 endif
 
