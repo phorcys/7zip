@@ -1,4 +1,4 @@
-7zip (23.01+dfsg-7) UNRELEASED; urgency=medium
+7zip (23.01+dfsg-7) unstable; urgency=medium
 
   [ Samuel Thibault ]
   * rules: Generalize DEB_HOST_ARCH testing.
@@ -6,7 +6,7 @@
   [ YOKOTA Hiroshi ]
   * Cosmetic fix
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 13 Nov 2023 10:51:01 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 13 Nov 2023 12:13:13 +0900
 
 7zip (23.01+dfsg-6) unstable; urgency=medium
 
