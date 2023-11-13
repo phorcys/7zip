@@ -5,7 +5,7 @@ cxx_flags =
 
 ifeq      (kfreebsd, $(DEB_HOST_ARCH_OS))
   cxx_flags += -Wno-error=conversion
-else ifeq (hurd, $(DEB_HOST_ARCH_OS))
+else ifeq (hurd,     $(DEB_HOST_ARCH_OS))
   cxx_flags += -Wno-error=conversion
 endif
 
