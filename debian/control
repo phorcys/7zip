@@ -42,7 +42,8 @@ Description: 7-Zip file archiver with a high compression ratio
 
 Package: 7zip-standalone
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, 7zip (= ${binary:Version})
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Suggests: 7zip (= ${binary:Version})
 Replaces: 7zip (<< 23.01+dfsg-4~)
 Description: 7-Zip file archiver with a high compression ratio (standalone)
  7-Zip is a file archiver with a high compression ratio.
@@ -51,3 +52,6 @@ Description: 7-Zip file archiver with a high compression ratio (standalone)
   * /usr/bin/7zz: Full featured except plugins, standalone executable.
        This means 7zz can't work with unRAR plugin that provided by 7zip-rar
        package. Use 7zip package for unRAR plugin.
+ .
+ Note: If you want to create SFX archive, you also needs 7zip package for SFX
+       stub module.
