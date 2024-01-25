@@ -1,10 +1,12 @@
-7zip (23.01+dfsg-8) UNRELEASED; urgency=medium
+7zip (23.01+dfsg-8) unstable; urgency=medium
 
-  * Drop hard dependency in 7zip-standalone to minimize installation size (Closes: #1061485)
+  * Drop hard dependency in 7zip-standalone to minimize installation size
+    (Closes: #1061485)
   * Add man page for 7zz(1) instead of file link
-  * Has both Breaks+Replaces and Conflicts against p7zip-full and p7zip (Closes: #1061486)
+  * Has both Breaks+Replaces and Conflicts against p7zip-full and p7zip
+    (Closes: #1061486)
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Fri, 26 Jan 2024 00:14:01 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Fri, 26 Jan 2024 00:36:59 +0900
 
 7zip (23.01+dfsg-7) unstable; urgency=medium
 
