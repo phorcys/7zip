@@ -37,7 +37,7 @@ Description: 7-Zip file archiver with a high compression ratio
   * /usr/bin/7zr: LZMA (.7z, .lzma, .xz) only. Minimal executable.
  .
  Note: The unRAR code was dropped to keep compatible with DFSG.
-       Install 7zip-rar pacakge in non-free section to use RAR files.
+       Install 7zip-rar package in non-free section to use RAR files.
 
 Package: 7zip-standalone
 Architecture: any
