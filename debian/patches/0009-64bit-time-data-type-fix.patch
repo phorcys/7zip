@@ -5,6 +5,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 
+Forwarded: https://sourceforge.net/p/sevenzip/patches/435/
+
 Use C++17 function timespec_get() to get current UTC time.
 
 On 32bit architecture (armel,armhf,m68k,powerpc,sh4):
