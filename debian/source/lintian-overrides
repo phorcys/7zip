@@ -1,0 +1,4 @@
+# -*- mode: conf -*-
+
+# 7-Zip upstream dose not have its own repository
+7zip source: upstream-metadata-missing-repository [debian/upstream/metadata]
