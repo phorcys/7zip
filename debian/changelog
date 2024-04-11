@@ -1,3 +1,9 @@
+7zip (23.01+dfsg-10) UNRELEASED; urgency=medium
+
+  * Upgrade Debian standards
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Thu, 11 Apr 2024 12:34:08 +0900
+
 7zip (23.01+dfsg-9) unstable; urgency=medium
 
   * Typo fix
