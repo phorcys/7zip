@@ -1,9 +1,9 @@
-7zip (23.01+dfsg-9) UNRELEASED; urgency=medium
+7zip (23.01+dfsg-9) unstable; urgency=medium
 
   * Typo fix
   * Add Lintian overrides for source code
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Thu, 11 Apr 2024 11:24:58 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Thu, 11 Apr 2024 11:32:28 +0900
 
 7zip (23.01+dfsg-8) unstable; urgency=medium
 
