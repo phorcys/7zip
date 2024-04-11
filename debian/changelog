@@ -1,3 +1,10 @@
+7zip (23.01+dfsg-11) UNRELEASED; urgency=medium
+
+  * 64bit time data type fix
+  * Rediff patches
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Thu, 11 Apr 2024 15:30:11 +0900
+
 7zip (23.01+dfsg-10) unstable; urgency=medium
 
   * Upgrade Debian standards
