@@ -1,0 +1,29 @@
+From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
+Date: Thu, 11 Apr 2024 14:28:36 +0900
+Subject: 64bit time data type fix
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+../../../Windows/TimeUtils.cpp: In function ‘void NWindows::NTime::GetCurUtc_FiTime(timespec&)’:
+../../../Windows/TimeUtils.cpp:264:30: error: conversion from ‘__suseconds64_t’ {aka ‘long long int’} to ‘long int’ may change value [-Werror=conversion]
+  264 |     ft.tv_nsec = now.tv_usec * 1000;
+      |                  ~~~~~~~~~~~~^~~~~~
+---
+ CPP/Windows/TimeUtils.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CPP/Windows/TimeUtils.cpp b/CPP/Windows/TimeUtils.cpp
+index a083683..ca3e2aa 100644
+--- a/CPP/Windows/TimeUtils.cpp
++++ b/CPP/Windows/TimeUtils.cpp
+@@ -260,8 +260,7 @@ void GetCurUtc_FiTime(CFiTime &ft) throw()
+   struct timeval now;
+   if (gettimeofday(&now, NULL) == 0)
+   {
+-    ft.tv_sec = now.tv_sec;
+-    ft.tv_nsec = now.tv_usec * 1000;
++    TIMEVAL_TO_TIMESPEC(&now, &ft);
+   }
+ 
+  #endif
