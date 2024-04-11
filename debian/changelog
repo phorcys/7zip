@@ -1,3 +1,9 @@
+7zip (23.01+dfsg-12) UNRELEASED; urgency=medium
+
+  * Forward 64 bits time patch to upstream
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Thu, 11 Apr 2024 19:43:22 +0900
+
 7zip (23.01+dfsg-11) unstable; urgency=medium
 
   * 64bit time data type fix
