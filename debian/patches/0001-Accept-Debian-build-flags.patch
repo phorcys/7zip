@@ -8,10 +8,19 @@ Forwarded: not-needed
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/CPP/7zip/7zip_gcc.mak b/CPP/7zip/7zip_gcc.mak
-index a8eb6e3..0bb776d 100644
+index b3f94be..04209f0 100644
 --- a/CPP/7zip/7zip_gcc.mak
 +++ b/CPP/7zip/7zip_gcc.mak
-@@ -87,14 +87,14 @@ SHARED_EXT=.dll
+@@ -45,7 +45,7 @@ CFLAGS_DEBUG = -g
+ else
+ CFLAGS_DEBUG = -DNDEBUG
+ ifneq ($(CC), $(CROSS_COMPILE)clang)
+-LFLAGS_STRIP = -s
++LFLAGS_STRIP =
+ endif
+ endif
+ 
+@@ -104,14 +104,14 @@ SHARED_EXT=.dll
  LDFLAGS = -shared -DEF $(DEF_FILE) $(LDFLAGS_STATIC)
  else
  SHARED_EXT=.so
@@ -25,10 +34,10 @@ index a8eb6e3..0bb776d 100644
  
 -LDFLAGS = $(LDFLAGS_STATIC)
 +LDFLAGS = $(DEB_LDFLAGS) $(LDFLAGS_STATIC)
+ # -z force-bti
  # -s is not required for clang, do we need it for GCC ???
  
- #-static -static-libgcc -static-libstdc++
-@@ -149,7 +149,7 @@ endif
+@@ -169,7 +169,7 @@ endif
  
  
  
@@ -37,21 +46,12 @@ index a8eb6e3..0bb776d 100644
  
  
  ifdef IS_MINGW
-@@ -190,7 +190,7 @@ CXX_WARN_FLAGS =
+@@ -210,7 +210,7 @@ CXX_WARN_FLAGS =
  #-Wno-invalid-offsetof
  #-Wno-reorder
  
--CXXFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) -o $@
-+CXXFLAGS = $(DEB_CXXFLAGS) $(DEB_CPPFLAGS) $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) -o $@
+-CXXFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) $(CXX_INCLUDE_FLAGS) -o $@
++CXXFLAGS = $(DEB_CXXFLAGS) $(DEB_CPPFLAGS) $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) $(CXX_INCLUDE_FLAGS) -o $@
  
  STATIC_TARGET=
  ifdef COMPL_STATIC
-@@ -208,7 +208,7 @@ $(O):
- # -Wl,--print-gc-sections
- 
- ifneq ($(CC), $(CROSS_COMPILE)clang)
--LFLAGS_STRIP = -s
-+LFLAGS_STRIP =
- endif
- 
- LFLAGS_ALL = $(LFLAGS_STRIP) $(MY_ARCH_2) $(LDFLAGS) $(FLAGS_FLTO) $(LD_arch) $(OBJS) $(MY_LIBS) $(LIB2)
