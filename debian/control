@@ -17,6 +17,10 @@ Depends: ${misc:Depends},
          ${shlibs:Depends}
 Suggests: 7zip-standalone,
           7zip-rar
+Breaks: p7zip-full (<= 16.02+dfsg-8),
+        p7zip (<= 16.02+dfsg-8)
+Replaces: p7zip-full (<= 16.02+dfsg-8),
+          p7zip (<= 16.02+dfsg-8)
 Provides: p7zip-full,
           p7zip
 Description: 7-Zip file archiver with a high compression ratio
