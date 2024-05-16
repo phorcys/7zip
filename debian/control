@@ -1,22 +1,24 @@
 Source: 7zip
-Section: utils
-Priority: optional
 Maintainer: YOKOTA Hiroshi <yokota.hgml@gmail.com>
 Uploaders: Dylan Aïssi <daissi@debian.org>
-Build-Depends: debhelper-compat (= 13), dh-exec
+Section: utils
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-exec
 Standards-Version: 4.7.0
-Rules-Requires-Root: no
-Homepage: https://www.7-zip.org/
-Vcs-Git: https://salsa.debian.org/debian/7zip.git
 Vcs-Browser: https://salsa.debian.org/debian/7zip
+Vcs-Git: https://salsa.debian.org/debian/7zip.git
+Homepage: https://www.7-zip.org/
+Rules-Requires-Root: no
 
 Package: 7zip
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Suggests: 7zip-standalone, 7zip-rar
-Breaks: p7zip-full (<= 16.02+dfsg-8), p7zip (<= 16.02+dfsg-8)
-Replaces: p7zip-full (<= 16.02+dfsg-8), p7zip (<= 16.02+dfsg-8)
-Provides: p7zip-full, p7zip
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Suggests: 7zip-standalone,
+          7zip-rar
+Provides: p7zip-full,
+          p7zip
 Description: 7-Zip file archiver with a high compression ratio
  7-Zip is a file archiver with a high compression ratio. The main features
  of 7-Zip are:
@@ -41,7 +43,8 @@ Description: 7-Zip file archiver with a high compression ratio
 
 Package: 7zip-standalone
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
 Suggests: 7zip (= ${binary:Version})
 Replaces: 7zip (<< 23.01+dfsg-4~)
 Description: 7-Zip file archiver with a high compression ratio (standalone)

@@ -2,6 +2,7 @@
 
   * New upstream version 24.05+dfsg
   * Rediff patches
+  * Reorder sequence of d/control fields by cme (routine-update)
 
  -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Thu, 16 May 2024 13:38:43 +0900
 
