@@ -152,6 +152,12 @@ Copyright: 2015-2017, Apple Inc.
 License: BSD-3-clause
 Comment: Some parts come from the "LZFSE compression library"
 
+Files: C/ZstdDec.c
+Copyright: 2024 Igor Pavlov
+License: BSD-3-clause
+Comment: the code was developed by Igor Pavlov, using Zstandard format
+         specification and original zstd decoder code as reference code.
+
 Files: debian/*
 Copyright: 2021 Collabora, Ltd.
            2021-2023 YOKOTA Hiroshi <yokota.hgml@gmail.com>
