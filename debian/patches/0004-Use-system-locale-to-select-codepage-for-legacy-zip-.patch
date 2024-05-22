@@ -22,7 +22,7 @@ index 272e53b..90ad44f 100644
  #include "StdAfx.h"
  
  #include "../../../../C/CpuArch.h"
-@@ -450,8 +455,159 @@ void CItem::GetUnicodeString(UString &res, const AString &s, bool isComment, boo
+@@ -450,8 +455,165 @@ void CItem::GetUnicodeString(UString &res, const AString &s, bool isComment, boo
      }
      #endif
    }
@@ -122,7 +122,8 @@ index 272e53b..90ad44f 100644
 +  if (isOem || isAnsi) {
 +
 +    const char *legacyCp = nullptr;
-+    int tableLen = sizeof(isOem ? lcToOemTable : lcToAnsiTable) / sizeof(char *);
++    // lcToOemTable and lcToAnsiTable should have equal size as locales list is the same
++    int tableLen = sizeof(lcToOemTable) / sizeof(lcToOemTable[0]);
 +    int lcLen = 0, i;
 +
 +    // Detect required code page name from current locale 
@@ -137,6 +138,11 @@ index 272e53b..90ad44f 100644
 +          legacyCp = isOem ? lcToOemTable[i + 1] : lcToAnsiTable[i + 1];
 +          break; // Stop searching once a match is found
 +        }
++    }
++
++    // not found; use 437 by default
++    if (!legacyCp) {
++      legacyCp = "CP437";
 +    }
 +
 +    if (legacyCp) {
