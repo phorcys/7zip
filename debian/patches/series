@@ -1,3 +1,4 @@
 0001-Accept-Debian-build-flags.patch
 0002-Use-getcwd-3-POSIX-extension-to-avoid-PATH_MAX-macro.patch
 0003-Disable-local-echo-display-when-in-input-passwords-C.patch
+0004-Use-system-locale-to-select-codepage-for-legacy-zip-.patch
