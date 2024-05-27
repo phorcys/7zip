@@ -4,11 +4,11 @@ Subject: Use system locale to select codepage for legacy zip archives
 
 Fixes https://sourceforge.net/p/sevenzip/bugs/2473/
 ---
- CPP/7zip/Archive/Zip/ZipItem.cpp | 176 ++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 174 insertions(+), 2 deletions(-)
+ CPP/7zip/Archive/Zip/ZipItem.cpp | 182 ++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 180 insertions(+), 2 deletions(-)
 
 diff --git a/CPP/7zip/Archive/Zip/ZipItem.cpp b/CPP/7zip/Archive/Zip/ZipItem.cpp
-index 272e53b..d313a31 100644
+index 272e53b..871c9d5 100644
 --- a/CPP/7zip/Archive/Zip/ZipItem.cpp
 +++ b/CPP/7zip/Archive/Zip/ZipItem.cpp
 @@ -1,5 +1,11 @@
@@ -23,7 +23,7 @@ index 272e53b..d313a31 100644
  #include "StdAfx.h"
  
  #include "../../../../C/CpuArch.h"
-@@ -450,8 +456,174 @@ void CItem::GetUnicodeString(UString &res, const AString &s, bool isComment, boo
+@@ -450,8 +456,180 @@ void CItem::GetUnicodeString(UString &res, const AString &s, bool isComment, boo
      }
      #endif
    }
@@ -108,17 +108,23 @@ index 272e53b..d313a31 100644
 +    "wa_BE", "CP1252", "zh_HK", "CP950", "zh_SG", "CP936"};
 +
 +  bool isOem = false;
++  bool isAnsi = false;
 +
 +  if (!isUtf8 &&
-+             (MadeByVersion.HostOS == NFileHeader::NHostOS::kNTFS ||
-+              MadeByVersion.HostOS == NFileHeader::NHostOS::kFAT)) {
++      MadeByVersion.HostOS == NFileHeader::NHostOS::kNTFS &&
++      MadeByVersion.Version >= 20) {
++    isAnsi = true;
++  } else 
++  if (!isUtf8 &&
++      (MadeByVersion.HostOS == NFileHeader::NHostOS::kNTFS ||
++      MadeByVersion.HostOS == NFileHeader::NHostOS::kFAT)) {
 +    isOem = true;
 +  }
 +
 +  const char *legacyCp = nullptr;
 +  const char *legacyCpAnsi = nullptr;
 +
-+  if (isOem || (useSpecifiedCodePage && (codePage != 65001))) {
++  if (isOem || isAnsi || (useSpecifiedCodePage && (codePage != 65001))) {
 +
 +    int tableLen = sizeof(lcToOemTable) / sizeof(lcToOemTable[0]);
 +    int lcLen = 0, i;
@@ -157,7 +163,7 @@ index 272e53b..d313a31 100644
 +      }
 +      
 +      iconv_t cd;
-+      if ((cd = iconv_open("UTF-8", useSpecifiedCodePage ? specCP : legacyCp)) != (iconv_t)-1) {
++      if ((cd = iconv_open("UTF-8", useSpecifiedCodePage ? specCP : (isOem ? legacyCp : legacyCpAnsi))) != (iconv_t)-1) {
 +
 +        AString sUtf8;
 +
