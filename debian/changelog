@@ -1,15 +1,17 @@
-7zip (24.06+dfsg-1) UNRELEASED; urgency=medium
+7zip (24.06+dfsg-1) unstable; urgency=medium
 
   [ Ivan Sorokin ]
   * Use system locale to select codepage for legacy zip archives
-  * Fixed some minor errors: 1) Avoid possible problems with table size calculation 2) Assume CP437 if charset detection fails
+  * Fixed some minor errors:
+      1) Avoid possible problems with table size calculation
+      2) Assume CP437 if charset detection fails
   * This code branch was actually unused
   * added -mcp support
 
   [ YOKOTA Hiroshi ]
   * New upstream version 24.06+dfsg
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Tue, 28 May 2024 02:35:43 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Tue, 28 May 2024 02:36:02 +0900
 
 7zip (24.05+dfsg-3) unstable; urgency=medium
 
