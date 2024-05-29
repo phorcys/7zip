@@ -2,6 +2,9 @@ From: Ivan Sorokin <unxed@mail.ru>
 Date: Wed, 22 May 2024 13:07:35 +0200
 Subject: Use system locale to select codepage for legacy zip archives
 
+Origin: https://sourceforge.net/p/sevenzip/bugs/2473/
+Forwarded: not-needed
+
 Fixes https://sourceforge.net/p/sevenzip/bugs/2473/
 ---
  CPP/7zip/Archive/Zip/ZipItem.cpp | 182 ++++++++++++++++++++++++++++++++++++++-
