@@ -1,3 +1,9 @@
+7zip (24.06+dfsg-3) UNRELEASED; urgency=medium
+
+  * Rediff patches
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 29 May 2024 11:52:36 +0900
+
 7zip (24.06+dfsg-2) unstable; urgency=medium
 
   [ Ivan Sorokin ]
