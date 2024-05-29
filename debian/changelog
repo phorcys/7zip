@@ -1,8 +1,9 @@
-7zip (24.06+dfsg-3) UNRELEASED; urgency=medium
+7zip (24.06+dfsg-3) unstable; urgency=medium
 
   * Rediff patches
+    Add metadata for a patch file
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 29 May 2024 11:52:36 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 29 May 2024 11:53:28 +0900
 
 7zip (24.06+dfsg-2) unstable; urgency=medium
 
