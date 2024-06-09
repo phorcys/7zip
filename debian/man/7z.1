@@ -124,6 +124,17 @@ set number of CPU threads
 .TQ
 \-mx[\fI\,N\/\fR]
 set compression level: \-mx1 (fastest) ... \-mx9 (ultra)
+
+.TQ
+\-mcp=[\fIcodepage number\fR]
+[Extra options for Zip format]:
+.br
+Use \fIcodepage number\fR for file name encoding.
+When 7-Zip detects legacy Zip format, 7-Zip automatically choose suitable legacy
+codepage number by your current locale.
+If automatic codepage chooser fails, use this option to manually set codepage number.
+.br
+(example): Use "\-mcp=437" for CP437
 .RE
 .TP
 \-o{\fI\,Directory\/\fR}
