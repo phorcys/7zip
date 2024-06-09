@@ -1,3 +1,10 @@
+7zip (24.06+dfsg-4) UNRELEASED; urgency=medium
+
+  [ Dmitry Shachnev ]
+  * Update 0004 patch to fix duplicate entries for languages with two scripts.
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 09 Jun 2024 20:04:55 +0900
+
 7zip (24.06+dfsg-3) unstable; urgency=medium
 
   * Rediff patches
