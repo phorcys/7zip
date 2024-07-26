@@ -8,7 +8,7 @@ Forwarded: not-needed
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/CPP/7zip/7zip_gcc.mak b/CPP/7zip/7zip_gcc.mak
-index b3f94be..04209f0 100644
+index 1a66003..87f929a 100644
 --- a/CPP/7zip/7zip_gcc.mak
 +++ b/CPP/7zip/7zip_gcc.mak
 @@ -45,7 +45,7 @@ CFLAGS_DEBUG = -g
