@@ -1,8 +1,8 @@
-7zip (24.08+dfsg-1) UNRELEASED; urgency=medium
+7zip (24.08+dfsg-1) unstable; urgency=medium
 
   * New upstream version 24.08+dfsg
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 12 Aug 2024 22:45:50 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 12 Aug 2024 23:13:32 +0900
 
 7zip (24.07+dfsg-2) unstable; urgency=medium
 
