@@ -12,6 +12,17 @@
 
 7zip (24.07+dfsg-1) unstable; urgency=medium
 
+  This version fixes CVE-2024-11477 (aka: ZDI-24-1532).
+
+  CVE-2024-11477 was introduced from 24.05+dfsg-1 and fixes in 24.07+dfsg-1.
+  CVE-2024-11477 is a integer underflow remote code execution vulnerability in
+  source code at "C/ZstdDec.c".
+
+  See also:
+    https://www.zerodayinitiative.com/advisories/ZDI-24-1532/
+    https://www.7-zip.org/history.txt
+    https://www.security.nl/posting/866544/Beveiligingslek+in+7-Zip+maakt+remote+code+execution+mogelijk
+
   * New upstream version 24.07+dfsg
 
  -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Thu, 20 Jun 2024 08:10:26 +0900
