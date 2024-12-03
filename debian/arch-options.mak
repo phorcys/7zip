@@ -3,7 +3,7 @@
 c_flags =
 cxx_flags =
 
-ifeq (hurd, $(DEB_HOST_ARCH_OS))
+ifeq (hurd-i386, $(DEB_HOST_ARCH))
   cxx_flags += -Wno-error=conversion
 endif
 
