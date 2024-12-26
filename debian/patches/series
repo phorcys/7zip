@@ -3,3 +3,4 @@
 0003-Disable-local-echo-display-when-in-input-passwords-C.patch
 0004-Use-system-locale-to-select-codepage-for-legacy-zip-.patch
 0005-Add-note-for-unexpected-recursive-operations-behavio.patch
+0005-Use-c-flags-for-asmc.patch
