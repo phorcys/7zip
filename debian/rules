@@ -6,46 +6,48 @@ export DEB_BUILD_MAINT_OPTIONS=hardening=+all reproducible=+all
 
 include debian/arch-options.mak
 
+m = $(if $(and $(findstring $(DEB_HOST_ARCH),amd64),$(findstring $(DEB_BUILD_ARCH),amd64)),cmpl_gcc_x64.mak,cmpl_gcc.mak)
+
 %:
 	dh $@
 
 override_dh_auto_build:
-	$(MAKE) -C CPP/7zip/Bundles/Alone2 -f ../../cmpl_gcc.mak \
+	$(MAKE) -C CPP/7zip/Bundles/Alone2 -f ../../$(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR=1 \
 		DEB_CFLAGS="$(CFLAGS) -pipe" \
 		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
 		DEB_LDFLAGS="$(LDFLAGS) -pipe"
-	$(MAKE) -C CPP/7zip/Bundles/Format7zF -f ../../cmpl_gcc.mak \
+	$(MAKE) -C CPP/7zip/Bundles/Format7zF -f ../../$(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR_COMPRESS=1 \
 		DEB_CFLAGS="$(CFLAGS) -pipe" \
 		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
 		DEB_LDFLAGS="$(LDFLAGS) -pipe"
-	$(MAKE) -C CPP/7zip/UI/Console -f ../../cmpl_gcc.mak \
+	$(MAKE) -C CPP/7zip/UI/Console -f ../../$(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR=1 \
 		DEB_CFLAGS="$(CFLAGS) -pipe" \
 		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
 		DEB_LDFLAGS="$(LDFLAGS) -pipe"
-	$(MAKE) -C CPP/7zip/Bundles/SFXCon -f ../../cmpl_gcc.mak \
+	$(MAKE) -C CPP/7zip/Bundles/SFXCon -f ../../$(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR=1 \
 		DEB_CFLAGS="$(CFLAGS) -pipe" \
 		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
 		DEB_LDFLAGS="$(LDFLAGS) -pipe"
-	$(MAKE) -C CPP/7zip/Bundles/Alone -f ../../cmpl_gcc.mak \
+	$(MAKE) -C CPP/7zip/Bundles/Alone -f ../../$(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR=1 \
 		DEB_CFLAGS="$(CFLAGS) -pipe" \
 		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
 		DEB_LDFLAGS="$(LDFLAGS) -pipe"
-	$(MAKE) -C CPP/7zip/Bundles/Alone7z -f ../../cmpl_gcc.mak \
+	$(MAKE) -C CPP/7zip/Bundles/Alone7z -f ../../$(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR=1 \
 		DEB_CFLAGS="$(CFLAGS) -pipe" \
@@ -54,10 +56,10 @@ override_dh_auto_build:
 		DEB_LDFLAGS="$(LDFLAGS) -pipe"
 
 override_dh_auto_clean:
-	$(MAKE) -C CPP/7zip/Bundles/Alone2    -f ../../cmpl_gcc.mak clean
-	$(MAKE) -C CPP/7zip/Bundles/Format7zF -f ../../cmpl_gcc.mak clean
-	$(MAKE) -C CPP/7zip/UI/Console        -f ../../cmpl_gcc.mak clean
-	$(MAKE) -C CPP/7zip/Bundles/Alone7z   -f ../../cmpl_gcc.mak clean
-	$(MAKE) -C CPP/7zip/Bundles/SFXCon    -f ../../cmpl_gcc.mak clean
-	$(MAKE) -C CPP/7zip/Bundles/Alone     -f ../../cmpl_gcc.mak clean
-	$(MAKE) -C CPP/7zip/Bundles/Alone7z   -f ../../cmpl_gcc.mak clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone2    -f ../../$(m) clean
+	$(MAKE) -C CPP/7zip/Bundles/Format7zF -f ../../$(m) clean
+	$(MAKE) -C CPP/7zip/UI/Console        -f ../../$(m) clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone7z   -f ../../$(m) clean
+	$(MAKE) -C CPP/7zip/Bundles/SFXCon    -f ../../$(m) clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone     -f ../../$(m) clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone7z   -f ../../$(m) clean

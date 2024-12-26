@@ -4,6 +4,7 @@ Uploaders: Dylan Aïssi <daissi@debian.org>
 Section: utils
 Priority: optional
 Build-Depends: debhelper-compat (= 13),
+               asmc-linux [amd64],
                dh-exec
 Standards-Version: 4.7.0
 Vcs-Browser: https://salsa.debian.org/debian/7zip
