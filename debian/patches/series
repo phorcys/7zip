@@ -4,3 +4,4 @@
 0004-Use-system-locale-to-select-codepage-for-legacy-zip-.patch
 0005-Add-note-for-unexpected-recursive-operations-behavio.patch
 0005-Use-c-flags-for-asmc.patch
+0006-Add-fpic-for-Asmc-options.patch
