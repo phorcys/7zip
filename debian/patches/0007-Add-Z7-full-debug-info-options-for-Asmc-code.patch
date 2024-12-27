@@ -1,0 +1,24 @@
+From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
+Date: Fri, 27 Dec 2024 12:21:37 +0900
+Subject: Add "-Z7" (full debug info) options for Asmc code
+
+Forwarded: not-needed
+
+Debian packager wants debug symbols
+---
+ CPP/7zip/7zip_gcc.mak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CPP/7zip/7zip_gcc.mak b/CPP/7zip/7zip_gcc.mak
+index 792ad13..edbeff3 100644
+--- a/CPP/7zip/7zip_gcc.mak
++++ b/CPP/7zip/7zip_gcc.mak
+@@ -194,7 +194,7 @@ AFLAGS_ABI = -elf -DABI_LINUX -DABI_CDECL
+ # -DABI_LINUX
+ # -DABI_CDECL
+ endif
+-AFLAGS = -nologo $(AFLAGS_ABI) -Fo$(O)/ -c -fpic
++AFLAGS = -nologo $(AFLAGS_ABI) -Fo$(O)/ -c -fpic -Z7
+ 
+ endif  # IS_MINGW
+ 
