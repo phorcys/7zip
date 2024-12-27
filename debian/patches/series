@@ -5,4 +5,3 @@
 0005-Add-note-for-unexpected-recursive-operations-behavio.patch
 0005-Use-c-flags-for-asmc.patch
 0006-Add-fpic-for-Asmc-options.patch
-0007-Add-Z7-full-debug-info-options-for-Asmc-code.patch
