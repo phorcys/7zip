@@ -1,15 +1,10 @@
 #! /usr/bin/dh-exec
-[amd64]  CPP/7zip/Bundles/Alone/b/g_x64/7za       usr/lib/7zip
-[amd64]  CPP/7zip/Bundles/Alone7z/b/g_x64/7zr     usr/lib/7zip
-[amd64]  CPP/7zip/Bundles/Format7zF/b/g_x64/7z.so usr/lib/7zip
-[amd64]  CPP/7zip/UI/Console/b/g_x64/7z           usr/lib/7zip
-[!amd64] CPP/7zip/Bundles/Alone/b/g/7za       usr/lib/7zip
-[!amd64] CPP/7zip/Bundles/Alone7z/b/g/7zr     usr/lib/7zip
-[!amd64] CPP/7zip/Bundles/Format7zF/b/g/7z.so usr/lib/7zip
-[!amd64] CPP/7zip/UI/Console/b/g/7z           usr/lib/7zip
+CPP/7zip/Bundles/Alone/b/${env:DEB_BUILDER_ID}/7za       usr/lib/7zip
+CPP/7zip/Bundles/Alone7z/b/${env:DEB_BUILDER_ID}/7zr     usr/lib/7zip
+CPP/7zip/Bundles/Format7zF/b/${env:DEB_BUILDER_ID}/7z.so usr/lib/7zip
+CPP/7zip/UI/Console/b/${env:DEB_BUILDER_ID}/7z           usr/lib/7zip
 #
-[amd64]  CPP/7zip/Bundles/SFXCon/b/g_x64/7zCon => usr/lib/7zip/7zCon.sfx
-[!amd64] CPP/7zip/Bundles/SFXCon/b/g/7zCon => usr/lib/7zip/7zCon.sfx
+CPP/7zip/Bundles/SFXCon/b/${env:DEB_BUILDER_ID}/7zCon => usr/lib/7zip/7zCon.sfx
 #
 debian/scripts/7z.sh    => usr/bin/7z
 debian/scripts/7za.sh   => usr/bin/7za

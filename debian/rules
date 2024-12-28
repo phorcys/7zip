@@ -7,10 +7,24 @@ export DEB_BUILD_MAINT_OPTIONS=hardening=+all reproducible=+all
 include debian/arch-options.mak
 
 # Use assembler code for amd64
-m = $(if $(and $(findstring $(DEB_HOST_ARCH),amd64), \
-	       $(findstring $(DEB_BUILD_ARCH),amd64)), \
-	../../cmpl_gcc_x64.mak, \
-	../../cmpl_gcc.mak)
+ifeq ($(DEB_HOST_ARCH),amd64)
+ ifeq ($(DEB_BUILD_ARCH),amd64)
+  USE_ASMC=1
+ endif
+endif
+ifndef USE_ASMC
+ USE_ASMC=0
+endif
+
+ifeq ($(USE_ASMC),1)
+ # gcc + x64-asm
+ m = ../../cmpl_gcc_x64.mak
+ export DEB_BUILDER_ID = g_x64
+else
+ # gcc
+ m = ../../cmpl_gcc.mak
+ export DEB_BUILDER_ID = g
+endif
 
 %:
 	dh $@
