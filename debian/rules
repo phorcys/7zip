@@ -7,13 +7,11 @@ export DEB_BUILD_MAINT_OPTIONS=hardening=+all reproducible=+all
 include debian/arch-options.mak
 
 # Use assembler code for amd64
+USE_ASMC = 0
 ifeq ($(DEB_HOST_ARCH),amd64)
  ifeq ($(DEB_BUILD_ARCH),amd64)
-  USE_ASMC=1
+  USE_ASMC = 1
  endif
-endif
-ifndef USE_ASMC
- USE_ASMC=0
 endif
 
 ifeq ($(USE_ASMC),1)
