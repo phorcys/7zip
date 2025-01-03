@@ -2,6 +2,8 @@ From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
 Date: Fri, 3 Jan 2025 10:11:58 +0900
 Subject: Add note for unexpected recursive operations behavior to usage text
 
+Forwarded: https://sourceforge.net/p/sevenzip/bugs/2540/
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1091693
 ---
  CPP/7zip/UI/Console/Main.cpp | 4 ++++
  1 file changed, 4 insertions(+)
