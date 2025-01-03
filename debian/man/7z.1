@@ -48,6 +48,17 @@ Supports major formats only, no plugins, but smaller executable size
 7zr
 Only supports LZMA codec and related formats (7z, lzma, xz),
 no plugins, but smallest executable size
+.SH Important Note of 7zip behavior
+When used without any \fI\,file_names\fR\, argument, 7z implicitly uses "."
+for \fI\,file_names\fR\,.
+This behavior leads some unexpected result.
+.TP
+"a" (add) command
+Recurcevily add files from current directory into \fI\,archive_name\fR file.
+.TP
+"d" (delete) command
+Recurcively delete files from \fI\,archive_name\fR file.
+This means \fB\,delete all files\fR from \fI\,archive_name\fR file.
 .SH OPTIONS
 .SS Commands
 .TP
