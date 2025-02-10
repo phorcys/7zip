@@ -1,3 +1,19 @@
+7zip (24.09+dfsg-4) UNRELEASED; urgency=medium
+
+  * Use assembler code on amd64
+  * Use "-c" flags for asmc
+  * dh-exec dose not support wildcards while renameing-install
+  * Refactor
+  * Add "-fpic" for Asmc options
+  * Add "-Z7" (full debug info) options for Asmc code
+  * Asmc doesn't support DWARF style debug symbols
+  * Refactor debian/*.install script
+  * Refactor
+  * Renumber patches
+  * Add "DEB_" prefix for Debian packaging values
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 10 Feb 2025 22:15:04 +0900
+
 7zip (24.09+dfsg-3) unstable; urgency=medium
 
   * Add note for unexpected recursive operations behavior (Closes: #1091693)
