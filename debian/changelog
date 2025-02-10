@@ -1,4 +1,4 @@
-7zip (24.09+dfsg-4) UNRELEASED; urgency=medium
+7zip (24.09+dfsg-4) unstable; urgency=medium
 
   * Use assembler code on amd64
   * Use "-c" flags for asmc
@@ -12,7 +12,7 @@
   * Renumber patches
   * Add "DEB_" prefix for Debian packaging values
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 10 Feb 2025 22:15:04 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 10 Feb 2025 22:16:07 +0900
 
 7zip (24.09+dfsg-3) unstable; urgency=medium
 
