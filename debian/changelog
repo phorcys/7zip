@@ -1,5 +1,16 @@
 7zip (24.09+dfsg-4) unstable; urgency=medium
 
+  * This version enables assembler code for amd64 architecture
+    (Closes: #1090988).
+    amd64 assembler code requires asmc-linux package and both builder/target
+    architecture is amd64.
+    If assembler code is enabled, you see "ASM" label in command line help
+    message.
+    > $ 7z
+    > 7-Zip 24.09 (x64) : Copyright (c) 1999-2024 Igor Pavlov : 2024-11-29
+    > 64-bit locale=*** Threads:*** OPEN_MAX:***, ASM
+    ----------------------------------------------^^^
+
   * Use assembler code on amd64
   * Use "-c" flags for asmc
   * dh-exec dose not support wildcards while renameing-install
@@ -11,6 +22,7 @@
   * Refactor
   * Renumber patches
   * Add "DEB_" prefix for Debian packaging values
+  * Update Lintian overrides
 
  -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 10 Feb 2025 22:16:07 +0900
 
