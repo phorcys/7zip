@@ -9,9 +9,9 @@ include debian/arch-options.mak
 # Use assembler code for amd64
 DEB_ASM_AMD64 = 0
 ifeq ($(DEB_HOST_ARCH),amd64)
- ifeq ($(DEB_BUILD_ARCH),amd64)
-  DEB_ASM_AMD64 = 1
- endif
+  ifeq ($(DEB_BUILD_ARCH),amd64)
+    DEB_ASM_AMD64 = 1
+  endif
 endif
 
 # Use assembler code for arm64
@@ -20,18 +20,18 @@ ifeq ($(DEB_HOST_ARCH),arm64)
   DEB_ASM_ARM64 = 1
 endif
 
-ifeq ($(DEB_ASM_AMD64),1)
- # gcc + x64-asm
- m = ../../cmpl_gcc_x64.mak
- export DEB_BUILDER_ID = g_x64
+ifeq      ($(DEB_ASM_AMD64),1)
+  # gcc + x64-asm
+  m = ../../cmpl_gcc_x64.mak
+  export DEB_BUILDER_ID = g_x64
 else ifeq ($(DEB_ASM_ARM64),1)
- # gcc + arm64-asm
- m = ../../cmpl_gcc_arm64.mak
- export DEB_BUILDER_ID = g_arm64
+  # gcc + arm64-asm
+  m = ../../cmpl_gcc_arm64.mak
+  export DEB_BUILDER_ID = g_arm64
 else
- # gcc
- m = ../../cmpl_gcc.mak
- export DEB_BUILDER_ID = g
+  # gcc
+  m = ../../cmpl_gcc.mak
+  export DEB_BUILDER_ID = g
 endif
 
 %:
