@@ -1,0 +1,21 @@
+From: YOKOTA Hiroshi <yokota.hgml@gmail.com>
+Date: Wed, 26 Feb 2025 14:55:33 +0900
+Subject: Use "clocale" instead of "locale.h" for C++ code
+
+---
+ CPP/7zip/Archive/Zip/ZipItem.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CPP/7zip/Archive/Zip/ZipItem.cpp b/CPP/7zip/Archive/Zip/ZipItem.cpp
+index a9105ad..47f6178 100644
+--- a/CPP/7zip/Archive/Zip/ZipItem.cpp
++++ b/CPP/7zip/Archive/Zip/ZipItem.cpp
+@@ -2,7 +2,7 @@
+ 
+ #ifndef _WIN32
+ #include <iconv.h>
+-#include <locale.h>
++#include <clocale>
+ #include <cstdio>
+ #include <cstdlib>
+ #endif
