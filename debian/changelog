@@ -1,8 +1,8 @@
-7zip (24.09+dfsg-7) UNRELEASED; urgency=medium
+7zip (24.09+dfsg-7) unstable; urgency=medium
 
   * Upgrade Debian policy to 4.7.2
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sat, 01 Mar 2025 22:06:55 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sat, 01 Mar 2025 22:06:59 +0900
 
 7zip (24.09+dfsg-6) unstable; urgency=medium
 
