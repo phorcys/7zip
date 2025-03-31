@@ -5,7 +5,7 @@ Section: utils
 Priority: optional
 Build-Depends: debhelper-compat (= 13),
                asmc-linux [amd64],
-               dh-exec
+               dh-exec (>= 0.30~),
 Standards-Version: 4.7.2
 Vcs-Browser: https://salsa.debian.org/debian/7zip
 Vcs-Git: https://salsa.debian.org/debian/7zip.git
