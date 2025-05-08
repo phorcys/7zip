@@ -1,9 +1,9 @@
-7zip (24.09+dfsg-8) UNRELEASED; urgency=medium
+7zip (24.09+dfsg-8) unstable; urgency=medium
 
   [ Roger Shimizu ]
   * d/control: Add B-D: dh-exec (>= 0.30~)
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Thu, 08 May 2025 19:40:13 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Thu, 08 May 2025 19:46:16 +0900
 
 7zip (24.09+dfsg-7) unstable; urgency=medium
 
