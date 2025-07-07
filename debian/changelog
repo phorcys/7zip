@@ -1,4 +1,4 @@
-7zip (25.00+dfsg-1) UNRELEASED; urgency=medium
+7zip (25.00+dfsg-1) unstable; urgency=medium
 
   * New upstream version 25.00+dfsg
   * Rediff patches
@@ -6,7 +6,7 @@
   * Disable CI for upstream codes branch
   * Enable cross build test in CI
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 07 Jul 2025 15:02:06 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Tue, 08 Jul 2025 00:16:13 +0900
 
 7zip (24.09+dfsg-8) unstable; urgency=medium
 
