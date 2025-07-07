@@ -4,3 +4,4 @@ include:
 
 variables:
   SALSA_CI_IGNORED_BRANCHES: 'upstream|pristine-tar'
+  SALSA_CI_DISABLE_CROSSBUILD_ARM64: 0
