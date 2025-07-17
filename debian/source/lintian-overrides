@@ -1,8 +1,5 @@
 # -*- mode: conf -*-
 
-# 7-Zip upstream dose not have its own repository
-7zip source: upstream-metadata-missing-repository [debian/upstream/metadata]
-
 # Use DEB_BUILDER_ID to select ASM/non-ASM build
 7zip source: dh-exec-subst-unknown-variable env:DEB_BUILDER_ID [debian/7zip-standalone.install:2]
 7zip source: dh-exec-subst-unknown-variable env:DEB_BUILDER_ID [debian/7zip.install:2]
