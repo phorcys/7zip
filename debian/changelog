@@ -1,10 +1,10 @@
-7zip (25.01+dfsg-1) UNRELEASED; urgency=medium
+7zip (25.01+dfsg-1) unstable; urgency=medium
 
   * Add upstream repository
   * New upstream version 25.01+dfsg
   * Rediff patches
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 04 Aug 2025 11:27:32 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 04 Aug 2025 11:33:19 +0900
 
 7zip (25.00+dfsg-1) unstable; urgency=medium
 
