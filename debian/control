@@ -10,7 +10,6 @@ Standards-Version: 4.7.2
 Vcs-Browser: https://salsa.debian.org/debian/7zip
 Vcs-Git: https://salsa.debian.org/debian/7zip.git
 Homepage: https://www.7-zip.org/
-Rules-Requires-Root: no
 
 Package: 7zip
 Architecture: any
