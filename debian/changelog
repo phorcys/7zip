@@ -1,3 +1,9 @@
+7zip (25.01+dfsg-4) UNRELEASED; urgency=medium
+
+  * Lintian fix: redundant-rules-requires-root-no-field
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 03 Nov 2025 12:49:11 +0900
+
 7zip (25.01+dfsg-3) unstable; urgency=medium
 
   * Drop Emacs mode line from debian/watch
