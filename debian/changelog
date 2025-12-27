@@ -1,8 +1,8 @@
-7zip (25.01+dfsg-5) UNRELEASED; urgency=medium
+7zip (25.01+dfsg-5) unstable; urgency=medium
 
   * Upgrade Debian standards to 4.7.3
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sat, 27 Dec 2025 22:54:59 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sat, 27 Dec 2025 23:00:04 +0900
 
 7zip (25.01+dfsg-4) unstable; urgency=medium
 
