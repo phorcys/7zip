@@ -1,3 +1,11 @@
+7zip (26.00+dfsg-1) UNRELEASED; urgency=medium
+
+  * New upstream version 26.00+dfsg
+  * Rediff patches
+  * Extend copyright years
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Fri, 13 Feb 2026 16:03:00 +0900
+
 7zip (25.01+dfsg-5) unstable; urgency=medium
 
   * Upgrade Debian standards to 4.7.3
