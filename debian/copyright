@@ -5,7 +5,7 @@ Files-Excluded: CPP/7zip/Compress/Rar*
 Comment: RAR code is under the non-free "unRAR license restriction"
 
 Files: *
-Copyright: 1999-2024 Igor Pavlov
+Copyright: 1999-2026 Igor Pavlov
 License: LGPL-2.1+
 
 Files: Asm/arm64/7zAsm.S
@@ -160,7 +160,7 @@ Comment: the code was developed by Igor Pavlov, using Zstandard format
 
 Files: debian/*
 Copyright: 2021 Collabora, Ltd.
-           2021-2024 YOKOTA Hiroshi <yokota.hgml@gmail.com>
+           2021-2026 YOKOTA Hiroshi <yokota.hgml@gmail.com>
 License: LGPL-2.1+
 
 License: LGPL-2.1+
