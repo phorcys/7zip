@@ -10,7 +10,7 @@ No needs to build executable files while in assembling.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CPP/7zip/7zip_gcc.mak b/CPP/7zip/7zip_gcc.mak
-index 2756ba4..5d05cf0 100644
+index b90f3c8..bc6a404 100644
 --- a/CPP/7zip/7zip_gcc.mak
 +++ b/CPP/7zip/7zip_gcc.mak
 @@ -194,7 +194,7 @@ AFLAGS_ABI = -elf -DABI_LINUX -DABI_CDECL
