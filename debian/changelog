@@ -1,8 +1,8 @@
-7zip (26.00+dfsg-3) UNRELEASED; urgency=medium
+7zip (26.00+dfsg-3) unstable; urgency=medium
 
   * Fix Dversion-Mangle to download correct upstream file
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sat, 14 Mar 2026 13:18:54 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sat, 14 Mar 2026 13:37:49 +0900
 
 7zip (26.00+dfsg-2) unstable; urgency=medium
 
