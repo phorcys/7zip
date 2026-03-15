@@ -1,3 +1,9 @@
+7zip (26.00+dfsg-4) UNRELEASED; urgency=medium
+
+  * Add more fixup for version strings
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 15 Mar 2026 13:39:16 +0900
+
 7zip (26.00+dfsg-3) unstable; urgency=medium
 
   * Fix Dversion-Mangle to download correct upstream file
