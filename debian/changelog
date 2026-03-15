@@ -1,8 +1,8 @@
-7zip (26.00+dfsg-4) UNRELEASED; urgency=medium
+7zip (26.00+dfsg-4) unstable; urgency=medium
 
   * Add more fixup for version strings
 
- -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 15 Mar 2026 13:39:16 +0900
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 15 Mar 2026 14:14:19 +0900
 
 7zip (26.00+dfsg-3) unstable; urgency=medium
 
