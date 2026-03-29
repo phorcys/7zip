@@ -5,4 +5,4 @@
 0005-Add-note-for-unexpected-recursive-operations-behavio.patch
 0006-Use-c-flags-for-asmc.patch
 0007-Add-fpic-for-Asmc-options.patch
-0008-Fix-Globally-suppress-GCC-11-Warray-bounds-false-pos.patch
+0008-Fix-Globally-suppress-GCC-16-Warray-bounds-false-pos.patch
