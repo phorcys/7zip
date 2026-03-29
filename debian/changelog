@@ -1,3 +1,12 @@
+7zip (26.00+dfsg-5) UNRELEASED; urgency=medium
+
+  * Rediff patches
+  * Fix: Globally suppress GCC 11+ -Warray-bounds false positives (Closes: #1132057)
+  * Apply patch for GCC-16+ only
+  * Forward array-bounds patch to upstream
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Sun, 29 Mar 2026 16:42:05 +0900
+
 7zip (26.00+dfsg-4) unstable; urgency=medium
 
   * Add more fixup for version strings
