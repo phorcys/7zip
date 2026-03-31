@@ -49,7 +49,7 @@ Ref: GCC Bugzilla #101476 (False positive bounds check in devirt)
  1 file changed, 9 insertions(+)
 
 diff --git a/CPP/Common/MyCom.h b/CPP/Common/MyCom.h
-index a177900..2c8c9ab 100644
+index 7dc21ba..abc6f04 100644
 --- a/CPP/Common/MyCom.h
 +++ b/CPP/Common/MyCom.h
 @@ -6,6 +6,15 @@

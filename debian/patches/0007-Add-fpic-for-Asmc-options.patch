@@ -13,7 +13,7 @@ Asmc author suggests this option:
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CPP/7zip/7zip_gcc.mak b/CPP/7zip/7zip_gcc.mak
-index bc6a404..1c78b07 100644
+index c5d2d50..b317701 100644
 --- a/CPP/7zip/7zip_gcc.mak
 +++ b/CPP/7zip/7zip_gcc.mak
 @@ -194,7 +194,7 @@ AFLAGS_ABI = -elf -DABI_LINUX -DABI_CDECL

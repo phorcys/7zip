@@ -11,7 +11,7 @@ Fixes https://sourceforge.net/p/sevenzip/bugs/2473/
  1 file changed, 184 insertions(+), 2 deletions(-)
 
 diff --git a/CPP/7zip/Archive/Zip/ZipItem.cpp b/CPP/7zip/Archive/Zip/ZipItem.cpp
-index 272e53b..47f6178 100644
+index 5684cac..b067182 100644
 --- a/CPP/7zip/Archive/Zip/ZipItem.cpp
 +++ b/CPP/7zip/Archive/Zip/ZipItem.cpp
 @@ -1,5 +1,12 @@
