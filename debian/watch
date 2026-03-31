@@ -1,7 +1,7 @@
 Version: 5
 
-Source: https://www.7-zip.org/download.html
-Matching-Pattern: a/7z(\d{4})-src\.tar\.xz
-Dversion-Mangle: s/(\d{2})\.(\d{2})\+dfsg$/$1$2/
-Oversion-Mangle: s/(\d{2})(\d{2})$/$1.$2+dfsg/
-Pgp-Mode: none
+Template: GitHub
+Owner: ip7z
+Project: 7zip
+Dversion-Mangle: s/\+dfsg\d?$//
+Oversion-Mangle: s/$/+dfsg1/
