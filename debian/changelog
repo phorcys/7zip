@@ -1,3 +1,12 @@
+7zip (26.00+dfsg1-1) UNRELEASED; urgency=medium
+
+  * Use upstream source from GitHub
+  * Drop file permission hack
+  * New upstream version 26.00+dfsg1
+  * Change newline characters in patch files to Unix style
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Wed, 01 Apr 2026 01:41:22 +0900
+
 7zip (26.00+dfsg-5) unstable; urgency=medium
 
   * Rediff patches
