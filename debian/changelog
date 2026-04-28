@@ -1,3 +1,12 @@
+7zip (26.01+dfsg-1) UNRELEASED; urgency=medium
+
+  * Revert version mangle for new upstream version
+  * New upstream version 26.01+dfsg
+  * Rediff patches
+  * Update man page for new "-spo{d|c|r}" option
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Tue, 28 Apr 2026 20:02:34 +0900
+
 7zip (26.00+dfsg1-3) unstable; urgency=medium
 
   * Relax "breaks"/"replaces" line in debian/control
