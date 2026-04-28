@@ -9,7 +9,7 @@ Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1091693
  1 file changed, 4 insertions(+)
 
 diff --git a/CPP/7zip/UI/Console/Main.cpp b/CPP/7zip/UI/Console/Main.cpp
-index 90e00a4..6a61867 100644
+index 521fe77..0fd7ce4 100644
 --- a/CPP/7zip/UI/Console/Main.cpp
 +++ b/CPP/7zip/UI/Console/Main.cpp
 @@ -133,6 +133,10 @@ static const char * const kHelpString =
