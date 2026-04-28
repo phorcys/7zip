@@ -4,4 +4,4 @@ Template: GitHub
 Owner: ip7z
 Project: 7zip
 Dversion-Mangle: s/\+dfsg\d?$//
-Oversion-Mangle: s/$/+dfsg1/
+Oversion-Mangle: s/$/+dfsg/
