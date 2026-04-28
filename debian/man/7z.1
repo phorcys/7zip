@@ -211,6 +211,25 @@ eliminate duplication of root folder for extract command
 \-spf
 use fully qualified file paths
 .TP
+\-spo{d|c|r}
+specifies the path generation mode for the output directory
+for archive extraction. The output directory path is generated from the path specified
+in the -o{\fI\,dir_path\fR\,} switch and the name of the archive being unpacked.
+.RS
+.TQ
+\-spod
+for Linux/Posix/macOS: -o{\fI\,dir_path\fR\,} specifies the direct path to the output directory.
+The asterisk (*) character in {\fI\,dir_path\fR\,} will not be replaced by the archive name.
+.TQ
+\-spoc
+7-Zip will concatenate the path specified in -o{\fI\,dir_path\fR\,} with the archive name
+to form the final path to the output directory.
+.TQ
+\-spor
+7-Zip will replace asterisk (*) character in the path specified in the -o{\fI\,dir_path\fR\,}
+with the archive name. This is the default option.
+.RE
+.TP
 \-ssc[\-]
 set sensitive case mode
 .TP
