@@ -3,6 +3,9 @@
 c_flags =
 cxx_flags =
 
+# Add special options for GCC 16 and later
+cxx_flags += -Wno-error=array-bounds
+
 ifeq (hurd-i386, $(DEB_HOST_ARCH))
   cxx_flags += -Wno-error=conversion
 endif
