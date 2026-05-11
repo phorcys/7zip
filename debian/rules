@@ -2,7 +2,7 @@
 
 include /usr/share/dpkg/architecture.mk
 
-export DEB_BUILD_MAINT_OPTIONS=hardening=+all reproducible=+all
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all reproducible=+all
 
 include debian/arch-options.mak
 
@@ -41,45 +41,45 @@ override_dh_auto_build:
 	$(MAKE) -C CPP/7zip/Bundles/Alone2 -f $(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR=1 \
-		DEB_CFLAGS="$(CFLAGS) -pipe" \
-		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
+		DEB_CFLAGS="$(CFLAGS)" \
+		DEB_CXXFLAGS="$(CXXFLAGS)" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
-		DEB_LDFLAGS="$(LDFLAGS) -pipe"
+		DEB_LDFLAGS="$(LDFLAGS)"
 	$(MAKE) -C CPP/7zip/Bundles/Format7zF -f $(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR_COMPRESS=1 \
-		DEB_CFLAGS="$(CFLAGS) -pipe" \
-		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
+		DEB_CFLAGS="$(CFLAGS)" \
+		DEB_CXXFLAGS="$(CXXFLAGS)" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
-		DEB_LDFLAGS="$(LDFLAGS) -pipe"
+		DEB_LDFLAGS="$(LDFLAGS)"
 	$(MAKE) -C CPP/7zip/UI/Console -f $(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR=1 \
-		DEB_CFLAGS="$(CFLAGS) -pipe" \
-		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
+		DEB_CFLAGS="$(CFLAGS)" \
+		DEB_CXXFLAGS="$(CXXFLAGS)" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
-		DEB_LDFLAGS="$(LDFLAGS) -pipe"
+		DEB_LDFLAGS="$(LDFLAGS)"
 	$(MAKE) -C CPP/7zip/Bundles/SFXCon -f $(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR=1 \
-		DEB_CFLAGS="$(CFLAGS) -pipe" \
-		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
+		DEB_CFLAGS="$(CFLAGS)" \
+		DEB_CXXFLAGS="$(CXXFLAGS)" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
-		DEB_LDFLAGS="$(LDFLAGS) -pipe"
+		DEB_LDFLAGS="$(LDFLAGS)"
 	$(MAKE) -C CPP/7zip/Bundles/Alone -f $(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR=1 \
-		DEB_CFLAGS="$(CFLAGS) -pipe" \
-		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
+		DEB_CFLAGS="$(CFLAGS)" \
+		DEB_CXXFLAGS="$(CXXFLAGS)" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
-		DEB_LDFLAGS="$(LDFLAGS) -pipe"
+		DEB_LDFLAGS="$(LDFLAGS)"
 	$(MAKE) -C CPP/7zip/Bundles/Alone7z -f $(m) \
 		CROSS_COMPILE="$(DEB_HOST_GNU_TYPE)-" \
 		DISABLE_RAR=1 \
-		DEB_CFLAGS="$(CFLAGS) -pipe" \
-		DEB_CXXFLAGS="$(CXXFLAGS) -pipe" \
+		DEB_CFLAGS="$(CFLAGS)" \
+		DEB_CXXFLAGS="$(CXXFLAGS)" \
 		DEB_CPPFLAGS="$(CPPFLAGS)" \
-		DEB_LDFLAGS="$(LDFLAGS) -pipe"
+		DEB_LDFLAGS="$(LDFLAGS)"
 
 override_dh_auto_clean:
 	$(MAKE) -C CPP/7zip/Bundles/Alone2    -f $(m) clean
