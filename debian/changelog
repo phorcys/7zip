@@ -1,3 +1,15 @@
+7zip (26.01+dfsg-2) UNRELEASED; urgency=medium
+
+  * Update patch for better description text
+  * Refactor and simplify compilation options
+  * Add "7Z" to Make values
+  * Rediff patches
+  * Use "-Wno-error=" option instead of #pragma
+  * Minimize "-Wno-error=array-bounds" usage for specific files
+  * Use "-Wno-error=array-bounds" option to some specific files to avoid false-positive error on GCC 16
+
+ -- YOKOTA Hiroshi <yokota.hgml@gmail.com>  Mon, 11 May 2026 20:47:03 +0900
+
 7zip (26.01+dfsg-1) unstable; urgency=medium
 
   * Revert version mangle for new upstream version
