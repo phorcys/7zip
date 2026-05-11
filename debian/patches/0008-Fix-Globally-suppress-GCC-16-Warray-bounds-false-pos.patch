@@ -4,6 +4,7 @@ Subject: Fix: Globally suppress GCC 16+ -Warray-bounds false positives
  (Closes: #1132057)
 
 Forwarded: https://sourceforge.net/p/sevenzip/bugs/2604/
+Forwarded: https://github.com/ip7z/7zip/issues/214
 
 [ Description ]
 Switching from local pragma fixes to global suppression for the
@@ -43,7 +44,8 @@ Globally ignoring this specific warning for GCC 16+ is the most
 maintainable solution to ensure build stability without refactoring
 the entire interface system.
 
-Ref: GCC Bugzilla #101476 (False positive bounds check in devirt)
+Ref: GCC Bugzilla #56456 (bogus/missing -Warray-bounds)
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56456
 ---
  CPP/Common/MyCom.h | 9 +++++++++
  1 file changed, 9 insertions(+)
