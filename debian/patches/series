@@ -5,3 +5,4 @@
 0005-Add-note-for-unexpected-recursive-operations-behavio.patch
 0006-Use-c-flags-for-asmc.patch
 0007-Add-fpic-for-Asmc-options.patch
+0008-Use-Wno-error-array-bounds-option-to-some-specific-f.patch
