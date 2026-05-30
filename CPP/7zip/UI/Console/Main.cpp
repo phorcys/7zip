@@ -133,6 +133,10 @@ static const char * const kHelpString =
     PROG_POSTFIX
     " <command> [<switches>...] <archive_name> [<file_names>...] [@listfile]\n"
     "\n"
+    "Note:\n"
+    "  If <file_names> is not specified, 7z" PROG_POSTFIX " implicitly uses \".\" as <file_names>.\n"
+    "  This means recursively add/delete/extract files to/from <archive_name>.\n"
+    "\n"
     "<Commands>\n"
     "  a : Add files to archive\n"
     "  b : Benchmark\n"

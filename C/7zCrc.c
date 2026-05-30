@@ -170,13 +170,21 @@ Z7_DIAGNOSTIC_IGNORE_END_RESERVED_MACRO_IDENTIFIER
 
 #endif // non-ARM*
 
+#if defined(MY_CPU_LOONGARCH64) && defined(Z7_LOONGARCH64_ASM_CRC)
+  #define Z7_CRC_HW_USE
+  #define CRC_HW_WORD_TYPE  UInt64
+  UInt32 Z7_FASTCALL CrcUpdateLoongArch64(UInt32 v, const void *data, size_t size, const UInt32 *table);
+#endif
+
 
 
 #if defined(Z7_CRC_HW_USE)
 
 // #pragma message("USE ARM HW CRC")
 
-#ifdef MY_CPU_64BIT
+#if defined(MY_CPU_LOONGARCH64) && defined(Z7_LOONGARCH64_ASM_CRC)
+  #define CRC_HW_UNROLL_BYTES 8
+#elif defined(MY_CPU_64BIT)
   #define CRC_HW_WORD_TYPE  UInt64
   #define CRC_HW_WORD_FUNC  __crc32d
 #else
@@ -184,7 +192,9 @@ Z7_DIAGNOSTIC_IGNORE_END_RESERVED_MACRO_IDENTIFIER
   #define CRC_HW_WORD_FUNC  __crc32w
 #endif
 
+#ifndef CRC_HW_UNROLL_BYTES
 #define CRC_HW_UNROLL_BYTES (sizeof(CRC_HW_WORD_TYPE) * 4)
+#endif
 
 #ifdef ATTRIB_CRC
   ATTRIB_CRC
@@ -197,6 +207,9 @@ Z7_NO_INLINE
 #endif
     (UInt32 v, const void *data, size_t size)
 {
+#if defined(MY_CPU_LOONGARCH64) && defined(Z7_LOONGARCH64_ASM_CRC)
+  return CrcUpdateLoongArch64(v, data, size, NULL);
+#else
   const Byte *p = (const Byte *)data;
   for (; size != 0 && ((unsigned)(ptrdiff_t)p & (CRC_HW_UNROLL_BYTES - 1)) != 0; size--)
     v = __crc32b(v, *p++);
@@ -221,6 +234,7 @@ Z7_NO_INLINE
     v = __crc32b(v, *p++);
 
   return v;
+#endif
 }
 
 #ifdef Z7_ARM_FEATURE_CRC32_WAS_SET

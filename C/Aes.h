@@ -16,7 +16,16 @@ void AesGenTables(void);
 /* UInt32 pointers must be 16-byte aligned */
 
 /* 16-byte (4 * 32-bit words) blocks: 1 (IV) + 1 (keyMode) + 15 (AES-256 roundKeys) */
-#define AES_NUM_IVMRK_WORDS ((1 + 1 + 15) * 4)
+#define AES_NUM_IVMRK_WORDS_BASE ((1 + 1 + 15) * 4)
+#define AES_NUM_KEYMRK_WORDS_BASE ((1 + 15) * 4)
+
+#if defined(__loongarch64) || defined(__loongarch__)
+/* OpenSSL LoongArch VP-AES AES_KEY layout: 15 round keys + 4-byte rounds field. */
+#define AES_NUM_IVMRK_WORDS (AES_NUM_IVMRK_WORDS_BASE + 64)
+#define AES_LOONGARCH_VPAES_KEY_OFFSET_WORDS AES_NUM_KEYMRK_WORDS_BASE
+#else
+#define AES_NUM_IVMRK_WORDS AES_NUM_IVMRK_WORDS_BASE
+#endif
 
 /* aes - 16-byte aligned pointer to keyMode+roundKeys sequence */
 /* keySize = 16 or 24 or 32 (bytes) */

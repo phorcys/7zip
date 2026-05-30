@@ -19,6 +19,7 @@ OBJS = \
   $O/Ppmd7Dec.o \
   $O/7zCrc.o \
   $O/7zCrcOpt.o \
+  $(LOONGARCH64_CRC_OBJS) \
   $O/7zAlloc.o \
   $O/7zArcIn.o \
   $O/7zBuf.o \

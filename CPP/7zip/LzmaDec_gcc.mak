@@ -5,6 +5,10 @@ endif
 ifdef IS_ARM64
 USE_LZMA_DEC_ASM=1
 endif
+ifdef IS_LOONGARCH64
+USE_LZMA_DEC_ASM=1
+USE_LOONGARCH64_LZMA_OPT ?= 1
+endif
 endif
 
 ifdef USE_LZMA_DEC_ASM

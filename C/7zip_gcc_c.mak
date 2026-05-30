@@ -142,6 +142,15 @@ C_WARN_FLAGS =
 
 CFLAGS = $(LOCAL_FLAGS) $(CFLAGS_BASE2) $(CFLAGS_BASE) $(CFLAGS_EXTRA) $(C_WARN_FLAGS) $(FLAGS_FLTO) $(CC_SHARED) -o $@
 
+ifdef USE_ASM
+ifdef IS_LOONGARCH64
+USE_LOONGARCH64_ASM=1
+LOONGARCH64_CRC_OBJS = $O/7zCrcLoongArch64.o
+USE_LOONGARCH64_LZMA_OPT ?= 1
+USE_LOONGARCH64_LZFIND_OPT ?= 1
+endif
+endif
+
 STATIC_TARGET=
 ifdef COMPL_STATIC
 STATIC_TARGET=$(PROGPATH_STATIC)
@@ -226,8 +235,19 @@ $O/LzFind.o: ../../../C/LzFind.c
 # ifdef MT_FILES
 $O/LzFindMt.o: ../../../C/LzFindMt.c
 	$(CC) $(CFLAGS) $<
+
+ifdef IS_LOONGARCH64
+ifdef USE_LOONGARCH64_LZFIND_OPT
+$O/LzFindOpt.o: ../../../Asm/loongarch64/LzFindOpt.S
+	$(CC) $(CFLAGS) $(ASM_FLAGS) $<
+else
 $O/LzFindOpt.o: ../../../C/LzFindOpt.c
 	$(CC) $(CFLAGS) $<
+endif
+else
+$O/LzFindOpt.o: ../../../C/LzFindOpt.c
+	$(CC) $(CFLAGS) $<
+endif
 
 $O/Threads.o: ../../../C/Threads.c
 	$(CC) $(CFLAGS) $<
@@ -286,6 +306,9 @@ $O/XzIn.o: ../../../C/XzIn.c
 
 
 ifdef USE_ASM
+ifdef IS_LOONGARCH64
+USE_LOONGARCH64_ASM=1
+else
 ifdef IS_X64
 USE_X86_ASM=1
 else
@@ -294,7 +317,23 @@ USE_X86_ASM=1
 endif
 endif
 endif
+endif
 
+ifdef USE_LOONGARCH64_ASM
+$O/7zCrcLoongArch64.o: ../../../Asm/loongarch64/7zCrcOpt.S
+	$(CC) $(CFLAGS) $<
+$O/7zCrcOpt.o: ../../7zCrcOpt.c
+	$(CC) $(CFLAGS) $<
+$O/7zCrc.o: CFLAGS += -DZ7_LOONGARCH64_ASM_CRC
+$O/XzCrc64Opt.o: ../../XzCrc64Opt.c
+	$(CC) $(CFLAGS) $<
+$O/Sha1Opt.o: ../../Sha1Opt.c
+	$(CC) $(CFLAGS) $<
+$O/Sha256Opt.o: ../../Sha256Opt.c
+	$(CC) $(CFLAGS) $<
+$O/AesOpt.o: ../../AesOpt.c
+	$(CC) $(CFLAGS) $<
+else
 ifdef USE_X86_ASM
 $O/7zCrcOpt.o: ../../../Asm/x86/7zCrcOpt.asm
 	$(MY_ASM) $(AFLAGS) $<
@@ -318,6 +357,7 @@ $O/Sha256Opt.o: ../../Sha256Opt.c
 $O/AesOpt.o: ../../AesOpt.c
 	$(CC) $(CFLAGS) $<
 endif
+endif
 
 
 ifdef USE_LZMA_DEC_ASM
@@ -332,12 +372,19 @@ $O/LzmaDecOpt.o: ../../../Asm/arm64/LzmaDecOpt.S ../../../Asm/arm64/7zAsm.S
 	$(CC) $(CFLAGS) $(ASM_FLAGS) $<
 endif
 
-$O/LzmaDec.o: ../../LzmaDec.c
+ifdef IS_LOONGARCH64
+ifdef USE_LOONGARCH64_LZMA_OPT
+$O/LzmaDecOpt.o: ../../../Asm/loongarch64/LzmaDecOpt.S
+	$(CC) $(CFLAGS) $(ASM_FLAGS) -DZ7_LOONGARCH64_LZMA_OPT_REAL $<
+endif
+endif
+
+$O/LzmaDec.o: ../../LzmaDec.c ../../../CPP/7zip/LzmaDec_gcc.mak
 	$(CC) $(CFLAGS) -DZ7_LZMA_DEC_OPT $<
 
 else
 
-$O/LzmaDec.o: ../../LzmaDec.c
+$O/LzmaDec.o: ../../LzmaDec.c ../../../CPP/7zip/LzmaDec_gcc.mak
 	$(CC) $(CFLAGS) $<
 
 endif

@@ -166,6 +166,7 @@ C_OBJS = \
   $O/Sort.o \
   $O/7zCrc.o \
   $O/7zCrcOpt.o \
+  $(LOONGARCH64_CRC_OBJS) \
 
 
 OBJS = \

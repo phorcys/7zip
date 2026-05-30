@@ -945,7 +945,73 @@ MY_HWCAP_CHECK_FUNC (SHA512)
 #endif // __APPLE__
 #endif // _WIN32
 
-#endif // MY_CPU_ARM_OR_ARM64
+#elif defined(MY_CPU_LOONGARCH)
+
+#if defined(__GLIBC__) && (__GLIBC__ * 100 + __GLIBC_MINOR__ >= 216)
+  #define Z7_GETAUXV_AVAILABLE
+#elif !defined(__QNXNTO__)
+  #if defined __has_include
+  #if __has_include (<sys/auxv.h>)
+    #define Z7_GETAUXV_AVAILABLE
+  #endif
+  #endif
+#endif
+
+#ifdef Z7_GETAUXV_AVAILABLE
+#include <sys/auxv.h>
+#define USE_HWCAP
+#endif
+
+#ifdef USE_HWCAP
+#if defined __has_include
+#if __has_include (<asm/hwcap.h>)
+#include <asm/hwcap.h>
+#endif
+#endif
+#ifndef HWCAP_LOONGARCH_LSX
+#define HWCAP_LOONGARCH_LSX    (1 << 4)
+#endif
+#ifndef HWCAP_LOONGARCH_LASX
+#define HWCAP_LOONGARCH_LASX   (1 << 5)
+#endif
+#ifndef HWCAP_LOONGARCH_CRC32
+#define HWCAP_LOONGARCH_CRC32  (1 << 6)
+#endif
+#define MY_getauxval getauxval
+#endif
+
+#ifdef USE_HWCAP
+BoolInt CPU_IsSupported_CRC32(void) { return (MY_getauxval(AT_HWCAP) & HWCAP_LOONGARCH_CRC32) ? 1 : 0; }
+BoolInt CPU_IsSupported_LSX(void)   { return (MY_getauxval(AT_HWCAP) & HWCAP_LOONGARCH_LSX)   ? 1 : 0; }
+BoolInt CPU_IsSupported_LASX(void)  { return (MY_getauxval(AT_HWCAP) & HWCAP_LOONGARCH_LASX)  ? 1 : 0; }
+#else
+BoolInt CPU_IsSupported_CRC32(void)
+{
+  #ifdef __loongarch64
+  return True;
+  #else
+  return False;
+  #endif
+}
+BoolInt CPU_IsSupported_LSX(void)
+{
+  #ifdef __loongarch_sx
+  return True;
+  #else
+  return False;
+  #endif
+}
+BoolInt CPU_IsSupported_LASX(void)
+{
+  #ifdef __loongarch_asx
+  return True;
+  #else
+  return False;
+  #endif
+}
+#endif
+
+#endif // MY_CPU_*
 
 
 

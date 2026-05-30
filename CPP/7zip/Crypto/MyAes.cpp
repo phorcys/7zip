@@ -197,6 +197,8 @@ Z7_COM7F_IMF2(UInt32, CAesCtrCoder::Filter(Byte *data, UInt32 size))
     #endif
     #endif
   #endif
+#elif defined(MY_CPU_LOONGARCH64) && defined(MY_CPU_LE)
+  #define USE_HW_AES
 #endif
 
 #ifdef USE_HW_AES

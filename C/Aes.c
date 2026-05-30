@@ -12,6 +12,9 @@ AES_CODE_FUNC g_AesCbc_Encode;
 AES_CODE_FUNC g_AesCtr_Code;
 UInt32 g_Aes_SupportedFunctions_Flags;
 #endif
+#ifdef MY_CPU_LOONGARCH64
+unsigned int OPENSSL_loongarch_hwcap_P;
+#endif
 
 MY_ALIGN(64)
 static UInt32 T[256 * 4];
@@ -102,6 +105,8 @@ static Byte InvS[256];
     #endif
     #endif
   #endif
+#elif defined(MY_CPU_LOONGARCH64) && defined(MY_CPU_LE)
+  #define USE_HW_AES
 #endif
 
 #ifdef USE_HW_AES
@@ -154,6 +159,13 @@ void AesGenTables(void)
   AES_CODE_FUNC e = AesCbc_Encode;
   AES_CODE_FUNC c = AesCtr_Code;
   UInt32 flags = 0;
+  #endif
+  #ifdef MY_CPU_LOONGARCH64
+  OPENSSL_loongarch_hwcap_P = 0;
+  if (CPU_IsSupported_LSX())
+    OPENSSL_loongarch_hwcap_P |= (1 << 4);
+  if (CPU_IsSupported_LASX())
+    OPENSSL_loongarch_hwcap_P |= (1 << 5);
   #endif
   
   #ifdef USE_HW_AES
@@ -230,7 +242,22 @@ void AesGenTables(void)
 #define FD(i, x) InvS[gb(x, m[(i - x) & 3])]
 #define FD4(i) dest[i] = Ui32(FD(i, 0), FD(i, 1), FD(i, 2), FD(i, 3)) ^ w[i];
 
-void Z7_FASTCALL Aes_SetKey_Enc(UInt32 *w, const Byte *key, unsigned keySize)
+#ifdef MY_CPU_LOONGARCH64
+extern int vpaes_set_encrypt_key(const unsigned char *userKey, int bits, void *key);
+extern int vpaes_set_decrypt_key(const unsigned char *userKey, int bits, void *key);
+
+static void Z7_FASTCALL Aes_SetKey_Enc_C(UInt32 *w, const Byte *key, unsigned keySize);
+static void Z7_FASTCALL Aes_SetKey_Dec_C(UInt32 *w, const Byte *key, unsigned keySize);
+#define AES_SET_KEY_STORAGE static
+#define AES_SET_KEY_ENC_IMPL Aes_SetKey_Enc_C
+#define AES_SET_KEY_DEC_IMPL Aes_SetKey_Dec_C
+#else
+#define AES_SET_KEY_STORAGE
+#define AES_SET_KEY_ENC_IMPL Aes_SetKey_Enc
+#define AES_SET_KEY_DEC_IMPL Aes_SetKey_Dec
+#endif
+
+AES_SET_KEY_STORAGE void Z7_FASTCALL AES_SET_KEY_ENC_IMPL(UInt32 *w, const Byte *key, unsigned keySize)
 {
   unsigned i, m;
   const UInt32 *wLim;
@@ -266,10 +293,10 @@ void Z7_FASTCALL Aes_SetKey_Enc(UInt32 *w, const Byte *key, unsigned keySize)
   while (++w != wLim);
 }
 
-void Z7_FASTCALL Aes_SetKey_Dec(UInt32 *w, const Byte *key, unsigned keySize)
+AES_SET_KEY_STORAGE void Z7_FASTCALL AES_SET_KEY_DEC_IMPL(UInt32 *w, const Byte *key, unsigned keySize)
 {
   unsigned i, num;
-  Aes_SetKey_Enc(w, key, keySize);
+  AES_SET_KEY_ENC_IMPL(w, key, keySize);
   num = keySize + 20;
   w += 8;
   for (i = 0; i < num; i++)
@@ -282,6 +309,32 @@ void Z7_FASTCALL Aes_SetKey_Dec(UInt32 *w, const Byte *key, unsigned keySize)
       DD(3)[Sbox[gb3(r)]];
   }
 }
+
+#ifdef MY_CPU_LOONGARCH64
+void Z7_FASTCALL Aes_SetKey_Enc(UInt32 *w, const Byte *key, unsigned keySize)
+{
+  Aes_SetKey_Enc_C(w, key, keySize);
+  if (CPU_IsSupported_AES())
+  {
+    void *vp = (void *)(w + AES_LOONGARCH_VPAES_KEY_OFFSET_WORDS);
+    vpaes_set_encrypt_key(key, (int)keySize * 8, vp);
+  }
+}
+
+void Z7_FASTCALL Aes_SetKey_Dec(UInt32 *w, const Byte *key, unsigned keySize)
+{
+  Aes_SetKey_Dec_C(w, key, keySize);
+  if (CPU_IsSupported_AES())
+  {
+    void *vp = (void *)(w + AES_LOONGARCH_VPAES_KEY_OFFSET_WORDS);
+    vpaes_set_decrypt_key(key, (int)keySize * 8, vp);
+  }
+}
+#endif
+
+#undef AES_SET_KEY_STORAGE
+#undef AES_SET_KEY_ENC_IMPL
+#undef AES_SET_KEY_DEC_IMPL
 
 /* Aes_Encode and Aes_Decode functions work with little-endian words.
   src and dest are pointers to 4 UInt32 words.

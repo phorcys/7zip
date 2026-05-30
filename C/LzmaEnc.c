@@ -1081,6 +1081,30 @@ Z7_NO_INLINE static void Z7_FASTCALL LenPriceEnc_UpdateTables(
     p->additionalOffset += (num); \
     p->matchFinder.Skip(p->matchFinderObj, (UInt32)(num)); }
 
+#if defined(MY_CPU_LOONGARCH64) && defined(MY_CPU_LE_UNALIGN_64) && \
+    (defined(__GNUC__) || defined(__clang__))
+#define LZMAENC_USE_CTZ_MATCH
+#define LZMAENC_MATCH_2_BYTES(p0, p1) (GetUi16(p0) == GetUi16(p1))
+Z7_FORCE_INLINE
+static unsigned LzmaEnc_MatchLen_Ctz(const Byte *p0, const Byte *p1,
+    unsigned len, unsigned lenLimit)
+{
+  while (len + 8 <= lenLimit)
+  {
+    const UInt64 diff = GetUi64(p0 + len) ^ GetUi64(p1 + len);
+    if (diff != 0)
+      return len + ((unsigned)__builtin_ctzll(diff) >> 3);
+    len += 8;
+  }
+
+  while (len != lenLimit && p0[len] == p1[len])
+    len++;
+  return len;
+}
+#else
+#define LZMAENC_MATCH_2_BYTES(p0, p1) ((p0)[0] == (p1)[0] && (p0)[1] == (p1)[1])
+#endif
+
 
 static unsigned ReadMatchDistances(CLzmaEnc *p, unsigned *numPairsRes)
 {
@@ -1117,12 +1141,16 @@ static unsigned ReadMatchDistances(CLzmaEnc *p, unsigned *numPairsRes)
         numAvail = LZMA_MATCH_LEN_MAX;
       {
         const Byte *p1 = p->matchFinder.GetPointerToCurrentPos(p->matchFinderObj) - 1;
-        const Byte *p2 = p1 + len;
         const ptrdiff_t dif = (ptrdiff_t)-1 - (ptrdiff_t)p->matches[(size_t)numPairs - 1];
+      #ifdef LZMAENC_USE_CTZ_MATCH
+        return LzmaEnc_MatchLen_Ctz(p1, p1 + dif, len, (unsigned)numAvail);
+      #else
+        const Byte *p2 = p1 + len;
         const Byte *lim = p1 + numAvail;
         for (; p2 != lim && *p2 == p2[dif]; p2++)
         {}
         return (unsigned)(p2 - p1);
+      #endif
       }
     }
   }
@@ -1264,13 +1292,17 @@ static unsigned GetOptimum(CLzmaEnc *p, UInt32 position)
       const Byte *data2;
       reps[i] = p->reps[i];
       data2 = data - reps[i];
-      if (data[0] != data2[0] || data[1] != data2[1])
+      if (!LZMAENC_MATCH_2_BYTES(data, data2))
       {
         repLens[i] = 0;
         continue;
       }
+    #ifdef LZMAENC_USE_CTZ_MATCH
+      len = LzmaEnc_MatchLen_Ctz(data, data2, 2, (unsigned)numAvail);
+    #else
       for (len = 2; len < numAvail && data[len] == data2[len]; len++)
       {}
+    #endif
       repLens[i] = len;
       if (len > repLens[repMaxIndex])
         repMaxIndex = i;
@@ -1684,8 +1716,12 @@ static unsigned GetOptimum(CLzmaEnc *p, UInt32 position)
         unsigned limit = p->numFastBytes + 1;
         if (limit > numAvailFull)
           limit = numAvailFull;
+      #ifdef LZMAENC_USE_CTZ_MATCH
+        len = LzmaEnc_MatchLen_Ctz(data, data2, 3, limit);
+      #else
         for (len = 3; len < limit && data[len] == data2[len]; len++)
         {}
+      #endif
         
         {
           unsigned state2 = kLiteralNextStates[state];
@@ -1732,11 +1768,15 @@ static unsigned GetOptimum(CLzmaEnc *p, UInt32 position)
         unsigned len;
         UInt32 price;
         const Byte *data2 = data - reps[repIndex];
-        if (data[0] != data2[0] || data[1] != data2[1])
+        if (!LZMAENC_MATCH_2_BYTES(data, data2))
           continue;
-        
+
+      #ifdef LZMAENC_USE_CTZ_MATCH
+        len = LzmaEnc_MatchLen_Ctz(data, data2, 2, numAvail);
+      #else
         for (len = 2; len < numAvail && data[len] == data2[len]; len++)
         {}
+      #endif
         
         // if (len < startLen) continue; // 18.new: speed optimization
 
@@ -1795,8 +1835,12 @@ static unsigned GetOptimum(CLzmaEnc *p, UInt32 position)
 
             price += GetPrice_Rep_0(p, state2, posState2);
 
-          for (; len2 < limit && data[len2] == data2[len2]; len2++)
-          {}
+          #ifdef LZMAENC_USE_CTZ_MATCH
+            len2 = LzmaEnc_MatchLen_Ctz(data, data2, len2, limit);
+          #else
+            for (; len2 < limit && data[len2] == data2[len2]; len2++)
+            {}
+          #endif
           
           len2 -= len;
           // if (len2 >= 3)
@@ -1903,8 +1947,12 @@ static unsigned GetOptimum(CLzmaEnc *p, UInt32 position)
           if (data[len2 - 2] == data2[len2 - 2])
           if (data[len2 - 1] == data2[len2 - 1])
           {
-          for (; len2 < limit && data[len2] == data2[len2]; len2++)
-          {}
+          #ifdef LZMAENC_USE_CTZ_MATCH
+            len2 = LzmaEnc_MatchLen_Ctz(data, data2, len2, limit);
+          #else
+            for (; len2 < limit && data[len2] == data2[len2]; len2++)
+            {}
+          #endif
           
           len2 -= len;
           
@@ -2001,10 +2049,14 @@ static unsigned GetOptimumFast(CLzmaEnc *p)
   {
     unsigned len;
     const Byte *data2 = data - p->reps[i];
-    if (data[0] != data2[0] || data[1] != data2[1])
+    if (!LZMAENC_MATCH_2_BYTES(data, data2))
       continue;
+  #ifdef LZMAENC_USE_CTZ_MATCH
+    len = LzmaEnc_MatchLen_Ctz(data, data2, 2, (unsigned)numAvail);
+  #else
     for (len = 2; len < numAvail && data[len] == data2[len]; len++)
     {}
+  #endif
     if (len >= p->numFastBytes)
     {
       p->backRes = (UInt32)i;
@@ -2080,9 +2132,14 @@ static unsigned GetOptimumFast(CLzmaEnc *p)
   {
     unsigned len, limit;
     const Byte *data2 = data - p->reps[i];
-    if (data[0] != data2[0] || data[1] != data2[1])
+    if (!LZMAENC_MATCH_2_BYTES(data, data2))
       continue;
     limit = mainLen - 1;
+  #ifdef LZMAENC_USE_CTZ_MATCH
+    len = LzmaEnc_MatchLen_Ctz(data, data2, 2, limit);
+    if (len >= limit)
+      return 1;
+  #else
     for (len = 2;; len++)
     {
       if (len >= limit)
@@ -2090,6 +2147,7 @@ static unsigned GetOptimumFast(CLzmaEnc *p)
       if (data[len] != data2[len])
         break;
     }
+  #endif
   }
   
   p->backRes = mainDist + LZMA_NUM_REPS;

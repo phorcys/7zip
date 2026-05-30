@@ -23,7 +23,10 @@ public:
 
   /*
   ~CStdInStream() { Close(); }
+  */
 
+  operator FILE *() { return _stream; }
+  /*
   bool Open(LPCTSTR fileName) throw();
   bool Close() throw();
   */

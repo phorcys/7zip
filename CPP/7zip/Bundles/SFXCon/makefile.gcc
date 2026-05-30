@@ -192,8 +192,10 @@ C_OBJS = \
   $O/Sha256Opt.o \
   $O/7zCrc.o \
   $O/7zCrcOpt.o \
+  $(LOONGARCH64_CRC_OBJS) \
   $O/Aes.o \
   $O/AesOpt.o \
+  $(LOONGARCH64_AES_OBJS) \
 
 OBJS = \
   $(LZMA_DEC_OPT_OBJS) \

@@ -633,6 +633,52 @@ VAES_COMPAT_STUB (AesCtr_Code_HW)
 
 
 
+#elif defined(MY_CPU_LOONGARCH64) && defined(MY_CPU_LE)
+
+extern void vpaes_encrypt(const unsigned char *in, unsigned char *out, const void *key);
+extern void vpaes_cbc_encrypt(const unsigned char *in, unsigned char *out,
+    size_t length, const void *key, unsigned char *ivec, int enc);
+
+#define AES_FUNC_START(name) \
+    void Z7_FASTCALL name(UInt32 *ivAes, Byte *data, size_t numBlocks)
+
+static void *Z7_FASTCALL GetVpaesKey(UInt32 *ivAes)
+{
+  return (void *)(ivAes + 4 + AES_LOONGARCH_VPAES_KEY_OFFSET_WORDS);
+}
+
+AES_FUNC_START (AesCbc_Encode_HW)
+{
+  if (numBlocks == 0)
+    return;
+  vpaes_cbc_encrypt(data, data, numBlocks * AES_BLOCK_SIZE,
+      GetVpaesKey(ivAes), (unsigned char *)(void *)ivAes, 1);
+}
+
+AES_FUNC_START (AesCbc_Decode_HW)
+{
+  if (numBlocks == 0)
+    return;
+  vpaes_cbc_encrypt(data, data, numBlocks * AES_BLOCK_SIZE,
+      GetVpaesKey(ivAes), (unsigned char *)(void *)ivAes, 0);
+}
+
+AES_FUNC_START (AesCtr_Code_HW)
+{
+  MY_ALIGN(16)
+  Byte out[AES_BLOCK_SIZE];
+  const void *key = GetVpaesKey(ivAes);
+  for (; numBlocks != 0; numBlocks--, data += AES_BLOCK_SIZE)
+  {
+    unsigned i;
+    if (++ivAes[0] == 0)
+      ivAes[1]++;
+    vpaes_encrypt((const unsigned char *)(const void *)ivAes, out, key);
+    for (i = 0; i < AES_BLOCK_SIZE; i++)
+      data[i] ^= out[i];
+  }
+}
+
 #elif defined(MY_CPU_ARM_OR_ARM64) && defined(MY_CPU_LE)
 
   #if   defined(__ARM_FEATURE_AES) \

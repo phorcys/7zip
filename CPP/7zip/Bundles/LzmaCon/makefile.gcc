@@ -106,6 +106,7 @@ CONSOLE_OBJS = \
 C_OBJS = \
   $O/7zCrc.o \
   $O/7zCrcOpt.o \
+  $(LOONGARCH64_CRC_OBJS) \
   $O/Alloc.o \
   $O/Bra86.o \
   $O/CpuArch.o \

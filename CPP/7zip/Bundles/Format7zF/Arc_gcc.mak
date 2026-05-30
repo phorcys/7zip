@@ -321,9 +321,11 @@ C_OBJS = \
   $O/7zBuf2.o \
   $O/7zCrc.o \
   $O/7zCrcOpt.o \
+  $(LOONGARCH64_CRC_OBJS) \
   $O/7zStream.o \
   $O/Aes.o \
   $O/AesOpt.o \
+  $(LOONGARCH64_AES_OBJS) \
   $O/Alloc.o \
   $O/Bcj2.o \
   $O/Bcj2Enc.o \

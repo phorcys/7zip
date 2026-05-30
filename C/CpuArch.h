@@ -426,6 +426,7 @@ MY_CPU_64BIT means that processor can work with 64-bit registers.
 #ifdef MY_CPU_LE
   #if defined(MY_CPU_X86_OR_AMD64) \
       || defined(MY_CPU_ARM64) \
+      || defined(MY_CPU_LOONGARCH64) \
       || defined(MY_CPU_RISCV) && defined(__riscv_misaligned_fast) \
       || defined(MY_CPU_E2K) && defined(__iset__) && (__iset__ >= 6)
     #define MY_CPU_LE_UNALIGN
@@ -691,6 +692,13 @@ BoolInt CPU_IsSupported_SHA2(void);
 BoolInt CPU_IsSupported_AES(void);
 #endif
 BoolInt CPU_IsSupported_SHA512(void);
+
+#elif defined(MY_CPU_LOONGARCH)
+
+BoolInt CPU_IsSupported_CRC32(void);
+BoolInt CPU_IsSupported_LSX(void);
+BoolInt CPU_IsSupported_LASX(void);
+#define CPU_IsSupported_AES CPU_IsSupported_LSX
 
 #endif
 

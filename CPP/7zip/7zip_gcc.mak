@@ -45,7 +45,7 @@ CFLAGS_DEBUG = -g
 else
 CFLAGS_DEBUG = -DNDEBUG
 ifneq ($(CC), $(CROSS_COMPILE)clang)
-LFLAGS_STRIP = -s
+LFLAGS_STRIP =
 endif
 endif
 
@@ -104,14 +104,14 @@ SHARED_EXT=.dll
 LDFLAGS = -shared -DEF $(DEF_FILE) $(LDFLAGS_STATIC)
 else
 SHARED_EXT=.so
-LDFLAGS = -shared -fPIC $(LDFLAGS_STATIC)
+LDFLAGS = -shared -fPIC $(DEB_7Z_LDFLAGS) $(LDFLAGS_STATIC)
 CC_SHARED=-fPIC
 endif
 
 
 else
 
-LDFLAGS = $(LDFLAGS_STATIC)
+LDFLAGS = $(DEB_7Z_LDFLAGS) $(LDFLAGS_STATIC)
 # -z force-bti
 # -s is not required for clang, do we need it for GCC ???
 
@@ -169,7 +169,7 @@ endif
 
 
 
-CFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CC_SHARED) -o $@
+CFLAGS = $(DEB_7Z_CFLAGS) $(DEB_7Z_CPPFLAGS) $(MY_ARCH_2) $(LOCAL_FLAGS) $(CFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CC_SHARED) -o $@
 
 
 ifdef IS_MINGW
@@ -194,7 +194,7 @@ AFLAGS_ABI = -elf -DABI_LINUX -DABI_CDECL
 # -DABI_LINUX
 # -DABI_CDECL
 endif
-AFLAGS = -nologo $(AFLAGS_ABI) -Fo$(O)/
+AFLAGS = -nologo $(AFLAGS_ABI) -Fo$(O)/ -c -fpic
 
 endif  # IS_MINGW
 
@@ -206,11 +206,21 @@ else
 CONSOLE_ASM_FLAGS=
 endif
 
+ifdef USE_ASM
+ifdef IS_LOONGARCH64
+USE_LOONGARCH64_ASM=1
+LOONGARCH64_AES_OBJS = $O/vpaes-loongarch64.o
+LOONGARCH64_CRC_OBJS = $O/7zCrcLoongArch64.o
+USE_LOONGARCH64_LZMA_OPT ?= 1
+USE_LOONGARCH64_LZFIND_OPT ?= 1
+endif
+endif
+
 CXX_WARN_FLAGS =
 #-Wno-invalid-offsetof
 #-Wno-reorder
 
-CXXFLAGS = $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) $(CXX_INCLUDE_FLAGS) -o $@
+CXXFLAGS = $(DEB_7Z_CXXFLAGS) $(DEB_7Z_CPPFLAGS) $(MY_ARCH_2) $(LOCAL_FLAGS) $(CXXFLAGS_BASE2) $(CFLAGS_BASE) $(FLAGS_FLTO) $(CXXFLAGS_EXTRA) $(CC_SHARED) $(CXX_WARN_FLAGS) $(CXX_STD_FLAGS) $(CXX_INCLUDE_FLAGS) -o $@
 
 STATIC_TARGET=
 ifdef COMPL_STATIC
@@ -533,7 +543,7 @@ $O/GptHandler.o: ../../Archive/GptHandler.cpp
 $O/GzHandler.o: ../../Archive/GzHandler.cpp
 	$(CXX) $(CXXFLAGS) $<
 $O/HandlerCont.o: ../../Archive/HandlerCont.cpp
-	$(CXX) $(CXXFLAGS) $<
+	$(CXX) $(CXXFLAGS) -Wno-error=array-bounds $<
 $O/HfsHandler.o: ../../Archive/HfsHandler.cpp
 	$(CXX) $(CXXFLAGS) $<
 $O/IhexHandler.o: ../../Archive/IhexHandler.cpp
@@ -660,7 +670,7 @@ $O/NsisRegister.o: ../../Archive/Nsis/NsisRegister.cpp
 $O/Rar5Handler.o: ../../Archive/Rar/Rar5Handler.cpp
 	$(CXX) $(CXXFLAGS) $<
 $O/RarHandler.o: ../../Archive/Rar/RarHandler.cpp
-	$(CXX) $(CXXFLAGS) $<
+	$(CXX) $(CXXFLAGS) -Wno-error=array-bounds $<
 
 $O/TarHandler.o: ../../Archive/Tar/TarHandler.cpp
 	$(CXX) $(CXXFLAGS) $<
@@ -1264,6 +1274,9 @@ $O/ZstdDec.o: ../../../../C/ZstdDec.c
 
 
 ifdef USE_ASM
+ifdef IS_LOONGARCH64
+USE_LOONGARCH64_ASM=1
+else
 ifdef IS_X64
 USE_X86_ASM=1
 USE_X64_ASM=1
@@ -1273,7 +1286,25 @@ USE_X86_ASM=1
 endif
 endif
 endif
+endif
 
+ifdef USE_LOONGARCH64_ASM
+$O/7zCrcLoongArch64.o: ../../../../Asm/loongarch64/7zCrcOpt.S
+	$(CC) $(CFLAGS) $<
+$O/vpaes-loongarch64.o: ../../../../Asm/loongarch64/vpaes-loongarch64.S ../../../../Asm/loongarch64/loongarch_arch.h
+	$(CC) $(CFLAGS) $<
+$O/7zCrcOpt.o: ../../../../C/7zCrcOpt.c
+	$(CC) $(CFLAGS) $<
+$O/7zCrc.o: CFLAGS += -DZ7_LOONGARCH64_ASM_CRC
+$O/XzCrc64Opt.o: ../../../../C/XzCrc64Opt.c
+	$(CC) $(CFLAGS) $<
+$O/Sha1Opt.o: ../../../../C/Sha1Opt.c
+	$(CC) $(CFLAGS) $<
+$O/Sha256Opt.o: ../../../../C/Sha256Opt.c
+	$(CC) $(CFLAGS) $<
+$O/Sort.o: ../../../../C/Sort.c
+	$(CC) $(CFLAGS) $<
+else
 ifdef USE_X86_ASM
 $O/7zCrcOpt.o: ../../../../Asm/x86/7zCrcOpt.asm
 	$(MY_ASM) $(AFLAGS) $<
@@ -1302,6 +1333,7 @@ $O/Sha256Opt.o: ../../../../C/Sha256Opt.c
 $O/Sort.o: ../../../../C/Sort.c
 	$(CC) $(CFLAGS) $<
 endif
+endif
 
 
 ifdef USE_X86_ASM_AES
@@ -1317,8 +1349,18 @@ ifdef USE_X64_ASM
 $O/LzFindOpt.o: ../../../../Asm/x86/LzFindOpt.asm
 	$(MY_ASM) $(AFLAGS) $<
 else
+ifdef IS_LOONGARCH64
+ifdef USE_LOONGARCH64_LZFIND_OPT
+$O/LzFindOpt.o: ../../../../Asm/loongarch64/LzFindOpt.S
+	$(CC) $(CFLAGS) $(ASM_FLAGS) $<
+else
 $O/LzFindOpt.o: ../../../../C/LzFindOpt.c
 	$(CC) $(CFLAGS) $<
+endif
+else
+$O/LzFindOpt.o: ../../../../C/LzFindOpt.c
+	$(CC) $(CFLAGS) $<
+endif
 endif
 
 ifdef USE_LZMA_DEC_ASM
@@ -1333,12 +1375,19 @@ $O/LzmaDecOpt.o: ../../../../Asm/arm64/LzmaDecOpt.S ../../../../Asm/arm64/7zAsm.
 	$(CC) $(CFLAGS) $(ASM_FLAGS) $<
 endif
 
-$O/LzmaDec.o: ../../../../C/LzmaDec.c
+ifdef IS_LOONGARCH64
+ifdef USE_LOONGARCH64_LZMA_OPT
+$O/LzmaDecOpt.o: ../../../../Asm/loongarch64/LzmaDecOpt.S
+	$(CC) $(CFLAGS) $(ASM_FLAGS) -DZ7_LOONGARCH64_LZMA_OPT_REAL $<
+endif
+endif
+
+$O/LzmaDec.o: ../../../../C/LzmaDec.c ../../LzmaDec_gcc.mak
 	$(CC) $(CFLAGS) -DZ7_LZMA_DEC_OPT $<
 
 else
 
-$O/LzmaDec.o: ../../../../C/LzmaDec.c
+$O/LzmaDec.o: ../../../../C/LzmaDec.c ../../LzmaDec_gcc.mak
 	$(CC) $(CFLAGS) $<
 
 endif
